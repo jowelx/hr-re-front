@@ -1,31 +1,41 @@
 import React from "react";
 import { ContainerDark,ContainerLight } from "src/styles/general/components";
-import { Input } from "src/styles/views/login/login";
 import {UserContext}from'../../context/userContext'
 import { useContext,useState } from 'react';
-import Switch from '@mui/material/Switch';
-const label = { inputProps: { 'aria-label': 'Switch demo' } };
+import SwitchMode from "src/components/UI/SwitchMode";
+import TextInput from "src/components/UI/TextInput";
 const Login =()=>{
     const {darkMode,setDarkMode}=useContext(UserContext)
 
     const Container =darkMode ===true?ContainerDark:ContainerLight
-
-    const handleChangeMode=(mode)=>{
-   
-        setDarkMode(mode)
+    const [value,setValues ]=useState({
+        user:"",
+        password:""
+    })
+    const handleChange=(prop,val)=>{
+        setValues({...value,[prop]:val})
     }
-
+   
     return(
     <>
     <Container>
-        
-        <Switch  onChange={(event)=> handleChangeMode(event.target.checked)}value={darkMode} />
-        <Input
-           id="outlined-helperText"
-           label="Helper text"
-           defaultValue="Default Value"
-           
-        />
+       
+         <TextInput
+         label="Usuario"
+         style={{width:"20vw"}}
+         value={value.user}
+         onChange={(event)=>handleChange("user",event.target.value)}
+         />
+
+         <TextInput
+         label="Contraseña"
+         password={true}
+         style={{width:"20vw"}}
+         value={value.password}
+         onChange={(event)=>handleChange("password",event.target.value)}
+      
+         />
+         
     </Container>
     </>
     )
