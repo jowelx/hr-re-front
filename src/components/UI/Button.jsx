@@ -1,4 +1,4 @@
-import LoadingButton from '@mui/lab/LoadingButton';
+import{ LoadingButton} from '@mui/lab';
 import { COLOR_DARK_SECOND } from 'src/constants/consts';
 
 export const ButtonLigth = ({name,onPress})=>{
