@@ -57,8 +57,9 @@ const TextInput =({label, onChange,style,error,password,value})=>{
         <>
    {password ===true ?
     <FormControl style={style} variant="standard">
-    <InputLabel htmlFor="standard-adornment-password">{label}</InputLabel>
+    <InputLabel error={error} htmlFor="standard-adornment-password">{label}</InputLabel>
     <Input
+   error={error}
       id="standard-adornment-password"
       type={values.showPassword ? 'text' : 'password'}
       value={value}
@@ -66,6 +67,7 @@ const TextInput =({label, onChange,style,error,password,value})=>{
       endAdornment={
         <InputAdornment position="end">
           <IconButton
+          error={error}
             aria-label="toggle password visibility"
             onClick={handleClickShowPassword}
             onMouseDown={handleMouseDownPassword}
@@ -76,19 +78,20 @@ const TextInput =({label, onChange,style,error,password,value})=>{
         </InputAdornment>
       }
     />
-    <p style={{margin:0,fontSize:10}}>vhhv</p>
+    <p style={{color:"rgb(240,40,40)",display:"flex",justifyContent:"left",height:"16px",margin:0,fontSize:12}}>{error}</p>
    </FormControl>
     :
-<FormControl>
+<FormControl      style={style} >
 <InputText
      variant="standard"
      id="standard-basic"
      label={label}
      onChange={onChange}
-     style={style}
+
      value={value}
+     error={error}
   />
-      <p style={{margin:0,fontSize:10}}>vhhv</p>
+      <p style={{color:"rgb(240,40,40)",display:"flex",justifyContent:"left",height:"14px",margin:0,fontSize:12}}>{error}</p>
 </FormControl>
 
   
