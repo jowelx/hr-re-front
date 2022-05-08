@@ -1,12 +1,10 @@
 import './App.css'
-import Login from './views/login/Login';
-import {UserContext}from'./context/userContext'
-import { useContext } from 'react';
 
+import Routes from './routes/routes';
 function App() {
    return (
     <div className="App">
-      <Login/>
+      <Routes/>
      </div>
   );
 }

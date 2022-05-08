@@ -1,26 +1,23 @@
-import React from "react";
-import { ContainerDark,ContainerLight,ContainerLogin } from "src/styles/general/components";
-import {UserContext}from'../../context/userContext'
-import { useContext,useState } from 'react';
-import SwitchMode from "src/components/UI/SwitchMode";
+import { ContainerLogin } from "src/styles/general/components";
+import { useState } from 'react';
 import TextInput from "src/components/UI/TextInput";
 import { styled } from "@mui/material";
 import { ButtonLigth,ButtonDark } from "src/components/UI/Button";
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
+
 const Wrapper= styled(Box)({
     display:"flex",
     justifyContent:"space-between",
     alignItems:"center",
     flexDirection:"column",
-    height:240,
-    width:200,
+    height:280,
     zIndex:99,
+    width:200,
     padding:"30px 20px",
     boxShadow:"0 .5vw 1vw .2vw rgba(100,100,100,.4)",
     borderRadius:5,
     backgroundColor:"rgb(230,230,230)"
-
 })
 const Bubble1= styled(Box)({
     position:"absolute",
@@ -70,33 +67,35 @@ const Bubble4= styled(Box)({
     boxShadow:"0 0vw 2vw .2vw rgba(100,100,100,.2)",
     background:" linear-gradient(80deg, rgb(50,150,210) 0%, rgb(0,210,255) 100%)",
 })
-const Login =()=>{
-    const {darkMode,setDarkMode}=useContext(UserContext)
-
-    const Container =darkMode ===true?ContainerDark:ContainerLight
+const Register =()=>{
     const [value,setValues ]=useState({
-        user:"",
+        name:"",
+        userName:"",
         password:""
     })
     const handleChange=(prop,val)=>{
         setValues({...value,[prop]:val})
     }
-   
     return(
-    <>
-    <Bubble1/>
-    <Bubble2/>
-    <Bubble3/>
-    <Bubble4/>
+        <>
+        <Bubble1/>
+        <Bubble2/>
+        <Bubble3/>
+        <Bubble4/>
     <ContainerLogin>
        <Wrapper>
-           <h5 style={{margin:0}}>Login</h5>
-          <TextInput
+           <h5 style={{margin:0}}>Registro</h5>
+        <TextInput
+         label="Nombre"
+         style={{width:"100%"}}
+         value={value.name}
+         onChange={(event)=>handleChange("name",event.target.value)}
+        />
+        <TextInput
          label="Usuario"
          style={{width:"100%"}}
-         value={value.user}
-         onChange={(event)=>handleChange("user",event.target.value)}
-     
+         value={value.userName}
+         onChange={(event)=>handleChange("userName",event.target.value)}
         />
          <TextInput
          label="Contraseña"
@@ -104,25 +103,23 @@ const Login =()=>{
          style={{width:"100%"}}
          value={value.password}
          onChange={(event)=>handleChange("password",event.target.value)}
-
-         />
-        <ButtonLigth
-        name={"Iniciar sesion"}
         />
-        <Link to="/register" style={{width:"100%",textDecoration:"none"}}>
         <ButtonDark
-        name={"Registrarse"}
+        name={"Registrarme"}
         />
-
+       <Link style={{width:"100%",textDecoration:"none"}} to="/">
+        <ButtonLigth
+        name={"Volver"}
+        >
+        </ButtonLigth>
         </Link>
-       
-       
-       </Wrapper>
-    
-             
-         
+        <Link to="/home">
+        Home
+        </Link>
+       </Wrapper>    
     </ContainerLogin>
-    </>
+   
+        </>
     )
 }
-export default Login;
+export default Register
