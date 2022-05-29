@@ -1,13 +1,16 @@
 import { Box } from "@mui/material"
 import styled from "@emotion/styled"
-const Wrapper= styled(Box)({
-    position:"relative",
-    width:"15vw",
-    margin:"1vw",
-    borderRadius:"4px 5px 5px 4px ",
-    backgroundColor:"rgb(255,255,255)",
-    boxShadow:"0 .5vw 1vw .1vw rgb(140,140,140)",
-})
+import { UserContext } from "src/context/userContext"
+import { useContext } from "react"
+import { COLOR_DARK_THIRD,COLOR_LIGHT_FIRST,COLOR_LIGHT_THIRD,COLOR_LIGHT_SHADOW,COLOR_DARK_SHADOW} from "src/constants/consts"
+const Wrapper= styled(Box)(({color,shadow})=>`
+    position:relative;
+    width:15vw;
+    margin:1vw;
+    border-radius:4px 5px 5px 4px ;
+    background-color:${color};
+    box-shadow:0 .3vw .4vw .1vw ${shadow}
+`)
 const Border1=styled(Box)({
     borderRadius:"4px 0px 0px 4px ",
     width:".8vw",
@@ -41,10 +44,14 @@ const Border4=styled(Box)({
     position:"absolute"
 })
 const Card =({vari,name, description})=>{
+    const {darkMode}=useContext(UserContext)
     return(
     <>
     
-    <Wrapper>
+    <Wrapper 
+      color={darkMode===false?COLOR_LIGHT_FIRST:COLOR_DARK_THIRD}
+      shadow={darkMode===false?COLOR_LIGHT_SHADOW:COLOR_DARK_SHADOW}
+    >
     {vari===1&&<Border1/> }
     {vari===2&&<Border2/>}
     {vari===3&&<Border3/>}

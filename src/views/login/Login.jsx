@@ -8,6 +8,7 @@ import { styled } from "@mui/material";
 import { ButtonLigth,ButtonDark } from "src/components/UI/Button";
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
+import axios from "axios";
 const Wrapper= styled(Box)({
     display:"flex",
     justifyContent:"space-between",
@@ -32,7 +33,7 @@ const Bubble1= styled(Box)({
     zIndex:1,
     padding:"30px 20px",
     boxShadow:"0 0vw 2vw .2vw rgba(100,100,100,.2)",
-    background:" linear-gradient(200deg, rgb(0,250,210) 0%, rgb(0,180,255) 100%)",
+    background:" linear-gradient(200deg, rgb(20,250,210) 0%, rgb(0,180,255) 100%)",
 })
 const Bubble2= styled(Box)({
     position:"absolute",
@@ -81,7 +82,7 @@ const Login =()=>{
     const handleChange=(prop,val)=>{
         setValues({...value,[prop]:val})
     }
-   
+
     return(
     <>
     <Bubble1/>
@@ -106,9 +107,14 @@ const Login =()=>{
          onChange={(event)=>handleChange("password",event.target.value)}
 
          />
+            <Link to="/home" style={{width:"100%",textDecoration:"none"}}>
+
+          
         <ButtonLigth
         name={"Iniciar sesion"}
         />
+  </Link>
+
         <Link to="/register" style={{width:"100%",textDecoration:"none"}}>
         <ButtonDark
         name={"Registrarse"}

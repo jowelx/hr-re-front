@@ -1,63 +1,80 @@
 import styled from "@emotion/styled"
 import { Box } from "@mui/material"
 import { Grid } from "@mui/material";
-import { ContainerDark,ContainerLight,ContainerLogin } from "src/styles/general/components";
-import Card from "src/components/UI/Card";
+import { ContainerDark,ContainerLight,ContainerHorizontal } from "src/styles/general/components";
+import { COLOR_LIGHT_FIRST,COLOR_DARK_FIRST } from "src/constants/consts";
+import SideMenu from "src/components/Menu";
+import CentralPanel from "./components/container/centralPaner";
+import RightPanel from "./components/container/RightPanel";
+import SwitchMode from "src/components/UI/SwitchMode";
+import Header from "./components/Header";
+import { UserContext } from "src/context/userContext";
+import { useContext, useState } from "react";
+import Text from "src/components/UI/Text";
 const Wrapper= styled(Box)({
+    display:"flex",
+    justifyContent:"flex-start",
+    alignItems:"center",
+    flexDirection:"column",
+    width:"100%",
+})
+const ContMode=styled(Box)({
     display:"flex",
     justifyContent:"center",
     alignItems:"center",
-    width:"80vw",
+    flexDirection:"row",
 })
+const items=[
+'Ventas',
+'Premiacion',
+'Reporte',
+'Configuracion',
+'Utilidades',
+'Actualizar',
+'Estadistica',
+'Salir',
+]
 
+const ContainerH=styled(ContainerHorizontal)(({darkmode})=>({
+ 
+  boxShadow:darkmode===true?"0 2px 3px 0 rgb(10,10,10)":"0 2px 2px 0 rgb(220,220,220)",
+  width:"100%",
+}))
 const Home =()=>{
+    const {darkMode}=useContext(UserContext)
+    const Container = darkMode ===true ?ContainerDark: ContainerLight
+    const [typeLot,setTypeLot]=useState(0)
     return(
         <>
-      <ContainerLight>
+      <Container>  
+      <ContainerH 
+      darkmode={darkMode}
+      >
+      <SideMenu items={items}/>
+      <Text 
+        size="2vw"
+        text={`Loteria`}/>
+      <ContMode>
+      <Text 
+        size="1vw"
+        text="Modo ocuro"/>
+      <SwitchMode/>
+      </ContMode>
+      </ContainerH>
       <Wrapper>
-            <Grid container>
-            <Grid item xs={3}>
-            <Card 
-            vari={1}
-            name={"test"}
-            description={"sea sapo hta"}
-            />
-            </Grid>
-            <Grid item xs={3}>
-            <Card 
-            vari={2}
-            name={"test"}
-            description={"sea sapo hta"}
-            />
-            </Grid>
-            <Grid item xs={3}>
-            <Card 
-            vari={4}
-            name={"test"}
-            description={"sea sapo hta"}
-            />
-            </Grid>
-            <Grid item xs={3}>
-            <Card 
-            vari={1}
-            name={"test"}
-            description={"sea sapo hta"}
-            />
-            </Grid>
-            <Grid item xs={3}>
-            <Card 
-            vari={3}
-            name={"test"}
-            description={"se sapo hta"}
-            />
-            </Grid>
-            
-           
-            </Grid>
-           
+     <Header setTypeLot={setTypeLot} />
+
+   {  typeLot>0&&
+     <Grid container>
+      <Grid item xs={9}>
+        <CentralPanel/>
+      </Grid>
+      <Grid item xs={3}>
+        <RightPanel/>
+      </Grid>
+     </Grid>}
         </Wrapper> 
-      </ContainerLight>
-     
+      </Container>
         </>
     )
 }

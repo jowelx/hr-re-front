@@ -6,20 +6,38 @@ import { COLOR_DARK_FIRST , COLOR_LIGHT_FIRST} from '../../constants/consts';
 export const ContainerDark = styled(Box)({
     backgroundColor: COLOR_DARK_FIRST,
     display:"flex",
-    justifyContent:"center",
+    justifyContent:"flex-start",
     alignItems:"center",
     width:"100%",
-    height: '100vh'
+    flexDirection:"column",
+    height: '100vh',
+    paddingTop:"5px",
+   
   })
   export const ContainerLight = styled(Box)({
     backgroundColor: COLOR_LIGHT_FIRST,
     display:"flex",
-    justifyContent:"center",
+    justifyContent:"flex-start",
     alignItems:"center",
     width:"100%",
-    height: '100vh'
-  })
+    flexDirection:"column",
+    height: '100vh',
+    paddingTop:"5px",
   
+  })
+  export const ContainerHorizontal=styled(Box)({
+    display:"flex",
+
+    justifyContent:"space-between",
+    alignItems:"center",
+    flexDirection:"row"
+  })
+  export const ContainerVertical=styled(Box)({
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
+    flexDirection:"column"
+  })
   export const ContainerLogin =styled(Box)({
     background:" linear-gradient(140deg, rgb(0,250,210) 0%, rgb(0,100,255) 100%)",
     display:"flex",

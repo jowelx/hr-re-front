@@ -11,7 +11,8 @@ const Wrapper= styled(Box)({
     justifyContent:"space-between",
     alignItems:"center",
     flexDirection:"column",
-    height:240,
+    height:280,
+    zIndex:99,
     width:200,
     padding:"30px 20px",
     boxShadow:"0 .5vw 1vw .2vw rgba(100,100,100,.4)",
@@ -25,6 +26,7 @@ const Bubble1= styled(Box)({
     marginLeft:"-8vw",
     marginTop:"-8vw",
     width:280,
+    zIndex:1,
     padding:"30px 20px",
     boxShadow:"0 0vw 2vw .2vw rgba(100,100,100,.2)",
     background:" linear-gradient(200deg, rgb(0,250,210) 0%, rgb(0,180,255) 100%)",
@@ -36,6 +38,7 @@ const Bubble2= styled(Box)({
     marginLeft:"70vw",
     marginTop:"25vw",
     width:200,
+    zIndex:1,
     padding:"30px 20px",
     boxShadow:"0 0vw 2vw .2vw rgba(100,100,100,.2)",
     background:" linear-gradient(-50deg, rgb(50,80,210) 0%, rgb(0,210,255) 100%)",
@@ -47,6 +50,7 @@ const Bubble3= styled(Box)({
     marginLeft:"60vw",
     marginTop:"2vw",
     width:100,
+    zIndex:1,
     padding:"30px 20px",
     boxShadow:"0 0vw 2vw .2vw rgba(100,100,100,.2)",
     background:" linear-gradient(20deg, rgb(50,120,210) 0%, rgb(0,210,255) 100%)",
@@ -58,13 +62,15 @@ const Bubble4= styled(Box)({
     marginLeft:"20vw",
     marginTop:"40vw",
     width:100,
+    zIndex:1,
     padding:"30px 20px",
     boxShadow:"0 0vw 2vw .2vw rgba(100,100,100,.2)",
     background:" linear-gradient(80deg, rgb(50,150,210) 0%, rgb(0,210,255) 100%)",
 })
 const Register =()=>{
     const [value,setValues ]=useState({
-        user:"",
+        name:"",
+        userName:"",
         password:""
     })
     const handleChange=(prop,val)=>{
@@ -80,10 +86,16 @@ const Register =()=>{
        <Wrapper>
            <h5 style={{margin:0}}>Registro</h5>
         <TextInput
+         label="Nombre"
+         style={{width:"100%"}}
+         value={value.name}
+         onChange={(event)=>handleChange("name",event.target.value)}
+        />
+        <TextInput
          label="Usuario"
          style={{width:"100%"}}
-         value={value.user}
-         onChange={(event)=>handleChange("user",event.target.value)}
+         value={value.userName}
+         onChange={(event)=>handleChange("userName",event.target.value)}
         />
          <TextInput
          label="Contraseña"
@@ -95,13 +107,18 @@ const Register =()=>{
         <ButtonDark
         name={"Registrarme"}
         />
-        <Link to="/">
+       <Link style={{width:"100%",textDecoration:"none"}} to="/">
         <ButtonLigth
         name={"Volver"}
-        />
+        >
+        </ButtonLigth>
+        </Link>
+        <Link to="/home">
+        Home
         </Link>
        </Wrapper>    
     </ContainerLogin>
+   
         </>
     )
 }
