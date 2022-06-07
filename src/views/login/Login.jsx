@@ -82,7 +82,6 @@ const Login =()=>{
     const handleChange=(prop,val)=>{
         setValues({...value,[prop]:val})
     }
-
     return(
     <>
     <Bubble1/>
@@ -111,6 +110,7 @@ const Login =()=>{
 
           
         <ButtonLigth
+        
         name={"Iniciar sesion"}
         />
   </Link>

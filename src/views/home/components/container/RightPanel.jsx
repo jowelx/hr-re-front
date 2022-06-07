@@ -1,14 +1,14 @@
 import styled from "@emotion/styled"
-import { useContext,useState } from "react";
+import { useContext} from "react";
 import { UserContext } from "../../../../context/userContext";
-import { COLOR_DARK_FIRST, COLOR_DARK_SECOND, COLOR_DARK_SHADOW, COLOR_DARK_THIRD } from "../../../../constants/consts";
+import {  COLOR_DARK_SECOND,  COLOR_DARK_THIRD } from "../../../../constants/consts";
 import { COLOR_LIGHT_SECOND } from "src/constants/consts";
-import List from "../List";
-import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
+import ListLotery from "../List";
+import Total from "../Total";
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
-
+import { List } from "@mui/material"
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={2} square {...props} />
@@ -55,10 +55,7 @@ const Container =styled.div(({darkMode})=>({
     flexWrap:"wrap"
 
 }))
-const Text= styled(Container)({
 
-    
-})
 const Tittle = styled.p(({darkMode})=>({
     width:"90%",
     marginLeft:"20px",
@@ -74,8 +71,19 @@ const RightPanel = ()=>{
         <Container
         darkMode={darkMode}
         >
-         
-      <Accordion  >
+          <List
+      sx={{
+        width: '100%',
+        maxWidth: 360,
+        position: 'relative',
+        overflow: 'auto',
+        flexDirection:"row",
+        maxHeight: 840,
+        '& ul': { padding: 0 },
+      }}
+      subheader={<li />}
+    >
+      <Accordion >
         <AccordionSummary 
         
         expandIcon={< ArrowRightIcon sx={{ color:"rgb(80,220,255)",fontSize: '2rem' }} />}
@@ -88,10 +96,10 @@ const RightPanel = ()=>{
           </Tittle>
         </AccordionSummary>
         <AccordionDetails darkMode={darkMode}>
-        <List/>
+        <ListLotery />
         </AccordionDetails>
       </Accordion>
-      <Accordion  >
+      <Accordion >
         <AccordionSummary 
         
         expandIcon={< ArrowRightIcon sx={{ color:"rgb(80,220,255)",fontSize: '2rem' }} />}
@@ -104,10 +112,10 @@ const RightPanel = ()=>{
           </Tittle>
         </AccordionSummary>
         <AccordionDetails darkMode={darkMode}>
-        <List/>
+        <Total/>
         </AccordionDetails>
       </Accordion>
-    
+      </List>
          
            
         </Container>
