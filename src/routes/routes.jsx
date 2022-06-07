@@ -1,6 +1,6 @@
 import { Redirect, Route,Switch } from "react-router-dom";
 import Login from "src/views/login/Login";
-import Register from "src/views/register/Register";
+import Register from "src/views/register/register";
 import Home from "src/views/home/Home";
 const PublicRoute = ({ component, ...options }) => {
     const isAuth = false;
