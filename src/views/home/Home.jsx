@@ -2,14 +2,13 @@ import styled from "@emotion/styled"
 import { Box } from "@mui/material"
 import { Grid } from "@mui/material";
 import { ContainerDark,ContainerLight,ContainerHorizontal } from "src/styles/general/components";
-import { COLOR_LIGHT_FIRST,COLOR_DARK_FIRST } from "src/constants/consts";
 import SideMenu from "src/components/Menu";
 import CentralPanel from "./components/container/centralPaner";
 import RightPanel from "./components/container/RightPanel";
 import SwitchMode from "src/components/UI/SwitchMode";
 import Header from "./components/Header";
 import { UserContext } from "src/context/userContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Text from "src/components/UI/Text";
 const Wrapper= styled(Box)({
     display:"flex",
@@ -41,9 +40,8 @@ const ContainerH=styled(ContainerHorizontal)(({darkmode})=>({
   width:"100%",
 }))
 const Home =()=>{
-    const {darkMode}=useContext(UserContext)
+    const {darkMode,lotery,setLotery}=useContext(UserContext)
     const Container = darkMode ===true ?ContainerDark: ContainerLight
-    const [typeLot,setTypeLot]=useState(0)
     return(
         <>
       <Container>  
@@ -62,15 +60,15 @@ const Home =()=>{
       </ContMode>
       </ContainerH>
       <Wrapper>
-     <Header setTypeLot={setTypeLot} />
+     <Header setTypeLot={setLotery} />
 
-   {  typeLot>0&&
+   {  lotery>0&&
      <Grid container>
       <Grid item xs={9}>
         <CentralPanel/>
       </Grid>
       <Grid item xs={3}>
-        <RightPanel/>
+        <RightPanel />
       </Grid>
      </Grid>}
         </Wrapper> 

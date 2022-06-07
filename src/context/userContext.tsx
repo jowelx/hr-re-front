@@ -24,7 +24,11 @@ import {Dispatch, SetStateAction} from 'react';
   setMessage:Dispatch<SetStateAction<String>>
   message:String,
   darkMode:boolean,
-  setDarkMode:Dispatch<SetStateAction<Boolean>>
+  setDarkMode:Dispatch<SetStateAction<Boolean>>,
+  islogged:boolean,
+  setIslogged:Dispatch<SetStateAction<Boolean>>,
+  lotery:number,
+  setLotery:Dispatch<SetStateAction<Number>>
 }
 export const DefaultUserContext:UserType = {
   user: {
@@ -40,8 +44,11 @@ export const DefaultUserContext:UserType = {
   message:'',
   setMessage:()=>{},
   darkMode:true,
-  setDarkMode:()=>{}
-  
+  setDarkMode:()=>{},
+  islogged:true,
+  setIslogged:()=>{},
+  lotery:0,
+  setLotery:()=>{}
 };
 
 export const UserContext = createContext(DefaultUserContext);
@@ -50,9 +57,24 @@ export default function UserProvider({children}) {
   const [user, setUser] = useState(DefaultUserContext.user);
   const [error, setError]=useState<Error>(DefaultUserContext.error)
   const [message, setMessage]=useState(DefaultUserContext.message)
- const  [darkMode,setDarkMode]=useState(false)
+  const [darkMode,setDarkMode]=useState(false)
+  const [islogged,setIslogged]=useState(false)
+  const [lotery,setLotery]=useState(0)
   return (
-    <UserContext.Provider value={{user, setUser, error, setError, message, setMessage,darkMode,setDarkMode}}>
+    <UserContext.Provider value={{
+      user, 
+      setUser,
+      error,
+      setError, 
+      message, 
+      setMessage,
+      darkMode,
+      setDarkMode, 
+      islogged,
+      setIslogged,
+      lotery,
+      setLotery
+      }}>
       {children}
     </UserContext.Provider>
   );
