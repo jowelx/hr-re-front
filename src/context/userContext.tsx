@@ -57,7 +57,7 @@ export default function UserProvider({children}) {
   const [user, setUser] = useState(DefaultUserContext.user);
   const [error, setError]=useState<Error>(DefaultUserContext.error)
   const [message, setMessage]=useState(DefaultUserContext.message)
-  const [darkMode,setDarkMode]=useState(false)
+  const [darkMode,setDarkMode]=useState(true)
   const [islogged,setIslogged]=useState(false)
   const [lotery,setLotery]=useState(0)
   return (

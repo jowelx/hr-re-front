@@ -3,15 +3,23 @@ import { COLOR_DARK_THIRD,COLOR_DARK_SECOND, COLOR_LIGHT_SECOND } from "src/cons
 import { UserContext } from "../../../context/userContext"
 import { useContext, useEffect, useState } from "react"
 import { List } from "@mui/material"
-const Container =styled.div(({darkmode})=>({
+import ContainerDark from "src/components/UI/Container"
+import TextField from '@mui/material/TextField';
+import { Grid } from '@mui/material';
+
+const Container =styled(ContainerDark)({
     marginTop:"5px",
-    backgroundColor:darkmode===true?COLOR_DARK_THIRD:COLOR_LIGHT_SECOND,
-    width:"90%",
+    width:"100%",
     height: "150px",
     borderRadius:"5px",
     boxShadow:"-1px 1px 2px .1px rgba(20,20,20,.5)",
     padding:"5px"
-}))
+})
+
+const ContainerImput=styled.div({
+  marginTop:"10px"
+  
+  })
 
 const Tittle = styled.p(({darkMode})=>({
     display:"flex",
@@ -310,14 +318,14 @@ const ListLotery =()=>{
     console.log(Lotery)
     return(
         <>
-        <Container darkmode={darkMode}>
+        <Container>
         <List
       sx={{
         width: '100%',
         maxWidth: 360,
         position: 'relative',
         overflow: 'auto',
-        maxHeight: 140,
+        maxHeight: 340,
         '& ul': { padding: 0 },
       }}
       subheader={<li />}
@@ -343,9 +351,24 @@ const ListLotery =()=>{
         </li>
       ))
       }
+
+      
     </List>
         </Container>
+
+    
+      <ContainerImput>
+            <Grid container spacing={0.5}>
+              <Grid item xs={6}>
+              <TextField id="outlined-basic" label="Numero" variant="outlined" />
+              </Grid>
+              <Grid item xs={6}>
+              <TextField id="outlined-basic" label="$" variant="outlined" />
+              </Grid>
+            </Grid>
+      </ContainerImput>
         </>
     )
+    
 }
 export default ListLotery

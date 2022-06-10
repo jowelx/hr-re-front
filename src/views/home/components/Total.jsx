@@ -6,15 +6,16 @@ import Button from '@mui/material/Button';
 import { List } from "@mui/material"
 import SendIcon from '@mui/icons-material/Send';
 import DeleteIcon from '@mui/icons-material/Delete';
-const Container =styled.div(({darkMode})=>({
+import ContainerDark from "src/components/UI/Container";
+
+const Container =styled(ContainerDark)({
     marginTop:"5px",
-    backgroundColor:darkMode===true?COLOR_DARK_THIRD:COLOR_LIGHT_SECOND,
     width:"95%",
     height: "400px",
     borderRadius:"5px",
     boxShadow:"-1px 1px 2px .1px rgba(20,20,20,.5)",
     padding:"5px"
-}))
+})
 
 const ButtonPrint = styled(Button)({
 
@@ -77,7 +78,7 @@ const Total =()=>{
     const {darkMode}=useContext(UserContext)
     return(
      <>
-  <Container darkMode={darkMode}>
+  <Container>
   <List
       sx={{
         width: '100%',
