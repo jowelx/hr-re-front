@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { useContext} from "react";
+import { useContext, useEffect} from "react";
 import { UserContext } from "../../../../context/userContext";
 import {  COLOR_DARK_SECOND,  COLOR_DARK_THIRD } from "../../../../constants/consts";
 import { COLOR_LIGHT_SECOND } from "src/constants/consts";
@@ -64,9 +64,13 @@ const Tittle = styled.p(({darkMode})=>({
     alignItems:"flex-start",
     color:darkMode===false ?COLOR_DARK_SECOND:"white"
 }))
-const RightPanel = ()=>{
+
+const RightPanel = ({ticketTotal,setTicketTotal})=>{
     const {darkMode}=useContext(UserContext)
-  
+    useEffect(() =>{
+      console.log(ticketTotal)
+    },[ticketTotal])
+
     return(
         <>
         <Container>
@@ -82,27 +86,19 @@ const RightPanel = ()=>{
       }}
       subheader={<li />}
     >
-
-      
         <AccordionSummary 
-        
-        
         darkMode={darkMode}
         >
           <Tittle
           darkMode={darkMode}
-
           >Ticket
           </Tittle>
         </AccordionSummary>
         <AccordionDetails darkMode={darkMode}>
-        <Total/>
+        <Total ticketTotal={ticketTotal} />
         </AccordionDetails>
-      
 
       </List>
-         
-           
         </Container>
         </>
     )

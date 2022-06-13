@@ -73,7 +73,7 @@ export default function UserProvider({children}) {
       islogged,
       setIslogged,
       lotery,
-      setLotery
+      setLotery,
       }}>
       {children}
     </UserContext.Provider>

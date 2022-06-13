@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { useContext} from "react";
+import { useContext, useState} from "react";
 import { UserContext } from "../../../../context/userContext";
 import {  COLOR_DARK_SECOND,  COLOR_DARK_THIRD } from "../../../../constants/consts";
 import { COLOR_LIGHT_SECOND } from "src/constants/consts";
@@ -11,6 +11,10 @@ import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import { List } from "@mui/material"
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ContainerDark from "src/components/UI/Container"
+import TextField from '@mui/material/TextField';
+import { Grid } from '@mui/material';
+import Button from '@mui/material/Button'
+
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={2} square {...props} />
   ))(({ theme }) => ({
@@ -63,9 +67,31 @@ const Tittle = styled.p(({darkMode})=>({
     alignItems:"flex-start",
     color:darkMode===false ?COLOR_DARK_SECOND:"white"
 }))
-const CentralPanel = ()=>{
+
+const ContainerImput=styled.div({
+  margin: "10px"
+  })
+
+  const ContainerAgg=styled.div({
+    margin: "10px"
+  })
+
+
+const CentralPanel = ({ticketTotal,setItemTotal})=>{
     const {darkMode}=useContext(UserContext)
-  
+    let ticket=[]
+    const [ticketItem,setTicketItem]=useState({
+      Numero: "",
+      Precio: "",
+    })
+    const hanledSummit=()=>{
+      setItemTotal([...ticketTotal,ticketItem])
+    }
+    const hanledChange=(props)=>(event)=>{
+     
+      setTicketItem({...ticketItem, [props]:event.target.value})
+    }
+
     return(
         <>
         <Container
@@ -98,6 +124,35 @@ const CentralPanel = ()=>{
         </AccordionSummary>
         <AccordionDetails darkMode={darkMode}>
         <ListLotery />
+
+
+        <ContainerImput>
+            <Grid container spacing={0.5}>
+              <Grid item xs={6}>
+              <TextField id="outlined-basic" label="Numero" variant="outlined" 
+              onChange={hanledChange("Numero")}
+              value={ticketItem.Numero}
+              
+              />
+              </Grid>
+              <Grid item xs={6}>
+              <TextField  id="outlined-basic" label="Precio" variant="outlined"
+              onChange={hanledChange("Precio")}
+              value={ticketItem.Precio}
+              />
+              </Grid>
+            </Grid>
+      </ContainerImput>
+
+      <ContainerAgg>
+      <Grid >
+      <Button variant="contained" sx={{ width: "100%"}}
+      onClick={hanledSummit}
+      >
+        Agregar
+      </Button>
+      </Grid>
+      </ContainerAgg>
         </AccordionDetails>
 
       </List>

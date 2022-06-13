@@ -9,8 +9,9 @@ import LeftPanel from "./components/container/LeftPanel";
 import SwitchMode from "src/components/UI/SwitchMode";
 import Header from "./components/Header";
 import { UserContext } from "src/context/userContext";
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import Text from "src/components/UI/Text";
+
 const Wrapper= styled(Box)({
     display:"flex",
     justifyContent:"flex-start",
@@ -43,6 +44,8 @@ const ContainerH=styled(ContainerHorizontal)(({darkmode})=>({
 const Home =()=>{
     const {darkMode,lotery,setLotery}=useContext(UserContext)
     const Container = darkMode ===true ?ContainerDark: ContainerLight
+    const[ticketTotal,setTicketTotal]=useState([])
+
     return(
         <>
       <Container>  
@@ -69,12 +72,21 @@ const Home =()=>{
       <Grid item xs={6}>
         <LeftPanel />
       </Grid>
+
       <Grid item xs={3}>
-        <CentralPanel />
+        <CentralPanel 
+        ticketTotal={ticketTotal} 
+        setItemTotal={setTicketTotal}
+        />
       </Grid>
+
       <Grid item xs={3}>
-        <RightPanel />
+        <RightPanel 
+       ticketTotal={ticketTotal}
+        setTicketTotal={setTicketTotal}
+        />
       </Grid>
+      
      </Grid>}
         </Wrapper> 
       </Container>

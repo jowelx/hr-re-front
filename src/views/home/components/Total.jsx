@@ -18,16 +18,17 @@ const Container =styled(ContainerDark)({
 })
 
 const ButtonPrint = styled(Button)({
-
     margin:"0px 10px"
 })
+
 const ContainerButton=styled.div({
 marginTop:"10px"
-
 })
+
 const TotalPrice=styled.p(({darkMode})=>({
     color:darkMode===false ?COLOR_DARK_SECOND:"white"
 }))
+
 const ContainerPrice=styled.div({
 display:"flex",
 padding:"0px 20px",
@@ -35,46 +36,10 @@ justifyContent:"space-between",
 flexDirection:"row"
 })
 
-const tiket=[
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-]
-const Total =()=>{
-    const [price,setPrice]=useState(0)
+
+const Total =({ticketTotal,setItemTotal})=>{
+    let price=0
+  
     const {darkMode}=useContext(UserContext)
     return(
      <>
@@ -91,14 +56,15 @@ const Total =()=>{
       }}
       subheader={<li />}
     >
-{tiket.map((item,i)=>{
+
+{ticketTotal?.map((item,i)=>{
     return(
         <ContainerPrice>
 <TotalPrice  darkMode={darkMode}>
-    {item.Tiket} {i+1}
+    {item.Numero} 
 </TotalPrice>
 <TotalPrice darkMode={darkMode}>
-    {item.monto}
+    {item.Precio}
 </TotalPrice>
 </ContainerPrice>
     )
@@ -111,7 +77,17 @@ const Total =()=>{
     Total
 </TotalPrice>
 <TotalPrice darkMode={darkMode}>
-    {price}
+{ticketTotal?.map((item,i)=>{
+   
+    price+= parseFloat(item.Precio)
+    return(
+        <>
+       {i===ticketTotal.length-1&&
+        `${price}$` }
+    
+    </> )
+   
+})}
 </TotalPrice>
 </ContainerPrice>
 

@@ -4,8 +4,7 @@ import { UserContext } from "../../../context/userContext"
 import { useContext, useEffect, useState } from "react"
 import { List } from "@mui/material"
 import ContainerDark from "src/components/UI/Container"
-import TextField from '@mui/material/TextField';
-import { Grid } from '@mui/material';
+
 
 const Container =styled(ContainerDark)({
     marginTop:"5px",
@@ -16,10 +15,7 @@ const Container =styled(ContainerDark)({
     padding:"5px"
 })
 
-const ContainerImput=styled.div({
-  marginTop:"10px"
-  
-  })
+
 
 const Tittle = styled.p(({darkMode})=>({
     display:"flex",
@@ -356,18 +352,8 @@ const ListLotery =()=>{
     </List>
         </Container>
 
-    
-      <ContainerImput>
-            <Grid container spacing={0.5}>
-              <Grid item xs={6}>
-              <TextField id="outlined-basic" label="Numero" variant="outlined" />
-              </Grid>
-              <Grid item xs={6}>
-              <TextField id="outlined-basic" label="$" variant="outlined" />
-              </Grid>
-            </Grid>
-      </ContainerImput>
-        </>
+
+      </>
     )
     
 }
