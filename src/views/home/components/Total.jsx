@@ -26,14 +26,21 @@ marginTop:"10px"
 })
 
 const TotalPrice=styled.p(({darkMode})=>({
-    color:darkMode===false ?COLOR_DARK_SECOND:"white"
+    color:darkMode===false ?COLOR_DARK_SECOND:"white",
+    backgroundColor: "blue",
+    margin: 5,
 }))
 
 const ContainerPrice=styled.div({
 display:"flex",
-padding:"0px 20px",
-justifyContent:"space-between",
-flexDirection:"row"
+justifyContent:"flex-start",
+flexDirection:"row",
+
+})
+
+const ListTime=styled.div({
+    
+    backgroundColor: "red",
 })
 
 
@@ -43,33 +50,35 @@ const Total =({ticketTotal,setItemTotal})=>{
     const {darkMode}=useContext(UserContext)
     return(
      <>
+     
   <Container>
   <List
       sx={{
         width: '100%',
         maxWidth: 360,
-        position: 'relative',
-        overflow: 'auto',
         maxHeight: 350,
-     
+        backgroundColor: "yellow",
         '& ul': { padding: 0 },
       }}
       subheader={<li />}
     >
-
+     <ul>Loteria</ul>   
 {ticketTotal?.map((item,i)=>{
     return(
         <ContainerPrice>
 <TotalPrice  darkMode={darkMode}>
-    {item.Numero} 
+    {item.Numero}
 </TotalPrice>
+
+<ListTime>-- 4:00 PM
+</ListTime>
+
 <TotalPrice darkMode={darkMode}>
     {item.Precio}
 </TotalPrice>
 </ContainerPrice>
     )
 })}
-        
     </List>
 
 <ContainerPrice>

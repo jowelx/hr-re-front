@@ -14,6 +14,9 @@ import ContainerDark from "src/components/UI/Container"
 import TextField from '@mui/material/TextField';
 import { Grid } from '@mui/material';
 import Button from '@mui/material/Button'
+import SelectHours from '../../../../components/UI/SelectHour'
+import { red } from "@mui/material/colors";
+
 
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={2} square {...props} />
@@ -61,7 +64,7 @@ const Container =styled(ContainerDark)({
 })
 
 const Tittle = styled.p(({darkMode})=>({
-    width:"90%",
+    width:"100%",
     marginLeft:"20px",
     display:"flex",
     alignItems:"flex-start",
@@ -69,12 +72,18 @@ const Tittle = styled.p(({darkMode})=>({
 }))
 
 const ContainerImput=styled.div({
-  margin: "10px"
+  margin: "3%"
   })
 
-  const ContainerAgg=styled.div({
-    margin: "10px"
-  })
+const ContainerHora=styled.div({
+  width: "100%",
+  marginTop: "3%",
+  backgroundColor: "red",
+})
+
+const ContainerAgg=styled.div({
+  margin: "3%"
+})
 
 
 const CentralPanel = ({ticketTotal,setItemTotal})=>{
@@ -125,6 +134,9 @@ const CentralPanel = ({ticketTotal,setItemTotal})=>{
         <AccordionDetails darkMode={darkMode}>
         <ListLotery />
 
+      <ContainerHora>
+          <SelectHours/>
+      </ContainerHora>
 
         <ContainerImput>
             <Grid container spacing={0.5}>

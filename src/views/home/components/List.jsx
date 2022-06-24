@@ -15,88 +15,89 @@ const Container =styled(ContainerDark)({
     padding:"5px"
 })
 
-
-
 const Tittle = styled.p(({darkMode})=>({
     display:"flex",
     alignItems:"flex-start",
     color:darkMode===false ?COLOR_DARK_SECOND:"white"
 }))
-const signos=[
-  
-]
+
 const sinSigno=[
   {
 nombre:"TachiraA",
-horas:[
-  "1",
-  "4:40",
-  "7"
-]
+horas:{
+  pm:["1:00 PM",
+    "4:40 PM",
+    "7:00 PM"]
+  }
   },
   {
     nombre:"TachiraB",
-    horas:[
-      "1",
-      "4:40",
-      "7"
-    ]
+    horas:{
+      pm:["1:00 PM",
+        "4:40 PM",
+        "7:00 PM"]
+      }
       },
       {
         nombre:"TachiraC",
-        horas:[
-          "1",
-          "4:40",
-          "7"
-        ]
+        horas:{
+          pm:["1:00 PM",
+            "4:40 PM",
+            "7:00 PM"]
+          }
           },
           {
             nombre:"TripleGana",
-            horas:[
-              "1",
-              "4",
-              "7"
-            ]
+            horas:{
+              pm:["1:00 PM",
+                "4:00 PM",
+                "7:00 PM"]
+              }
         },
         {
           nombre:"SuperGana",
-          horas:[
-            "1",
-            "4",
-            "7"
-          ]
+          horas:{
+            pm:["1:00 PM",
+              "4:00 PM",
+              "7:00 PM"]
+            }
             },
 
             {
               nombre:"Ñapagana",
-              horas:[
-                "9",
-                "10",
-                "11",
-                "12",
-                "1",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7"
+              horas:{
+                am:["9:00 AM",
+                  "10:00 AM",
+                  "11:00 AM"
+                ],
 
-              ]
+                pm:["12:00 PM",
+                  "1:00 PM",
+                  "2:00 PM",
+                  "3:00 PM",
+                  "4:00 PM",
+                  "5:00 PM",
+                  "6:00 PM",
+                  "7:00 PM",]
+                }
                 },
                 {
                   nombre:"Tropigana_Animales",
-                  horas:[
-                 "9",
-                "10",
-                "11",
-                "12",
-                "1",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7"
-                  ]
+                  horas:{
+                    am:["9:00 AM",
+                      "10:00 AM",
+                      "11:00 AM"
+                    ],
+    
+                    pm:["12:00 PM",
+                      "1:00 PM",
+                      "2:00 PM",
+                      "3:00 PM",
+                      "4:00 PM",
+                      "5:00 PM",
+                      "6:00 PM",
+                      "7:00 PM",]
+                    }
                     },
 
 
@@ -104,204 +105,224 @@ horas:[
 const conSigno=[
   {
     nombre:"triple_gana",
-    horas:[
-      "1",
-      "4",
-      "7"
-    ]
+    horas:{
+      pm:["1:00 PM",
+        "4:00 PM",
+        "7:00 PM"]
+      }
   },
   {
     nombre:"Triple_Zodiacal",
-    horas:[
-      "1",
-      "4:40",
-      "7"
-    ]
+    horas:{
+      pm:["1:00 PM",
+        "4:40 PM",
+        "7:00 PM"]
+      }
   },
   {
     nombre:"SuperGana 4 cifras",
-    horas:[
-      "1",
-      "4",
-      "7"
-    ]
+    horas:{
+      pm:["1:00 PM",
+        "4:00 PM",
+        "7:00 PM"]
+      }
   },
 ]
 const Cuatro_cifras=[
   {
     nombre:"superGana",
-    horas:[
-      "1",
-      "4",
-      "7"
-    ]
+    horas:{
+    pm:["1:00 PM",
+      "4:00 PM",
+      "7:00 PM"]
+    }
   },
   {
     nombre:"TolimaNoche",
-    horas:[
-      "8",
-    ]
+    horas:{
+      pm:["8:00 PM"]
+      }
   },
   {
     nombre:"CundinamarcaNoche",
-    horas:[
-      "8",
-    ]
+    horas:{
+      pm:["8:00 PM"]
+      }
   },
   {
     nombre:"DoradoDia",
-    horas:[
-      "2",
-    ]
+    horas:{
+      pm:["2:00 PM"]
+      }
   },
   {
     nombre:"MotilonDia",
-    horas:[
-      "3",
-    ]
+    horas:{
+      pm:["3:00 PM"]
+      }
   },
   {
     nombre:"MotilonNoche",
-    horas:[
-      "8",
-    ]
+    horas:{
+      pm:["8:00 PM"]
+      }
   },
   {
     nombre:"AstrolunaNoche",
-    horas:[
-      "8",
-    ]
+    horas:{
+      pm:["8:00 PM"]
+      }
   },
   {
     nombre:"AstrosolDia",
-    horas:[
-      "3",
-    ]
+    horas:{
+      pm:["3:00 PM"]
+      }
   },
   {
     nombre:"CafeteritoDia",
-    horas:[
-      "3",
-    ]
+    horas:{
+      pm:["3:00 PM"]
+      }
   },
   {
     nombre:"CafeteritoNoche",
-    horas:[
-      "8",
-    ]
+    horas:{
+      pm:["8:00 PM"]
+      }
   },
   {
     nombre:"ChonticoDia",
-    horas:[
-      "3",
-    ]
+    horas:{
+      pm:["3:00 PM"]
+      }
   },
   {
     nombre:"ChonticoNoche",
-    horas:[
-      "8",
-    ]
+    horas:{
+      pm:["8:00 PM"]
+      }
   },
   {
     nombre:"PaisitaDia",
-    horas:[
-      "3",
-    ]
+    horas:{
+      pm:["3:00 PM"]
+      }
   },
   {
     nombre:"PaisitaNoche",
-    horas:[
-      "8",
-    ]
+    horas:{
+      pm:["8:00 PM"]
+      }
   },
   {
     nombre:"CulonaDia",
-    horas:[
-      "3",
-    ]
+    horas:{
+      pm:["3:00 PM"]
+      }
   },
   {
     nombre:"CulonaNoche",
-    horas:[
-      "8",
-    ]
+    horas:{
+      pm:["8:00 PM"]
+      }
   },
   {
     nombre:"SinuanoDia",
-    horas:[
-      "3",
-    ]
+    horas:{
+      pm:["3:00 PM"]
+      }
   },
   {nombre:"SinuanoNoche",
-  horas:[
-    "8",
-  ]
+  horas:{
+    pm:["8:00 PM"]
+    }
   },
 ]
 const Animalitos=[
   {
     nombre:"TropiGana",
-    horas:[
-      "9",
-      "10",
-      "11",
-      "12",
-      "1",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-    ]
+    horas:{
+    am:["9:00 AM",
+      "10:00 AM",
+      "11:00 AM"],
+
+    pm:["12:00 PM",
+      "1:00 PM",
+      "3:00 PM",
+      "4:00 PM",
+      "5:00 PM",
+      "6:00 PM",
+      "7:00 PM",]
+    }
   },
   {
     nombre:"LottoActivo",
-    horas:[
-      "9",
-      "10",
-      "11",
-      "12",
-      "1",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-    ]
+    horas:{
+      am:["9:00 AM",
+        "10:00 AM",
+        "11:00 AM"],
+  
+      pm:["12:00 PM",
+        "1:00 PM",
+        "3:00 PM",
+        "4:00 PM",
+        "5:00 PM",
+        "6:00 PM",
+        "7:00 PM",]
+      }
   },
   {
     nombre:"LaGranjita",
-    horas:[
-      "9",
-      "10",
-      "11",
-      "12",
-      "1",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-    ]
+    horas:{
+      am:["9:00 AM",
+        "10:00 AM",
+        "11:00 AM"],
+  
+      pm:["12:00 PM",
+        "1:00 PM",
+        "3:00 PM",
+        "4:00 PM",
+        "5:00 PM",
+        "6:00 PM",
+        "7:00 PM",]
+      }
   },
   {
     nombre:"GranjaMillonaria",
-    horas:[
-      "9",
-      "10",
-      "11",
-      "12",
-      "1",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-    ]
+    horas:{
+      am:["9:00 AM",
+        "10:00 AM",
+        "11:00 AM"],
+  
+      pm:["12:00 PM",
+        "1:00 PM",
+        "3:00 PM",
+        "4:00 PM",
+        "5:00 PM",
+        "6:00 PM",
+        "7:00 PM",]
+      }
   },
- ]
+  {
+    nombre:"GuacharoActivo",
+    horas:{
+      am:["9:00 AM",
+        "10:00 AM",
+        "11:00 AM"],
+  
+      pm:["12:00 PM",
+        "1:00 PM",
+        "3:00 PM",
+        "4:00 PM",
+        "5:00 PM",
+        "6:00 PM",
+        "7:00 PM",]
+      }
+  }
+]
 const ListLotery =()=>{
-    const {darkMode,lotery}=useContext(UserContext)
+    const {darkMode,lotery,nameLotery,setNameLotery,setTime}=useContext(UserContext)
     const [Lotery,setLotery]=useState([])
     useEffect(()=>{
 
@@ -321,19 +342,25 @@ const ListLotery =()=>{
         maxWidth: 360,
         position: 'relative',
         overflow: 'auto',
-        maxHeight: 340,
+        maxHeight: 210,
         '& ul': { padding: 0 },
       }}
       subheader={<li />}
     >
       {
       Lotery?.map((item,sectionId) => (
-        <li 
+        <li
+        onClick={()=>{
+          setNameLotery(item.nombre);
+          setTime(item.horas)
+        }}
         style={{
             display:"flex",
             alignItems:"flex-start $",
             paddingLeft:"15px",
-            borderBottom:`solid 1px ${darkMode===true?"rgb(100,100,100)":"rgb(200,200,200)"}`
+            borderBottom:`solid 1px ${darkMode===true?"rgb(100,100,100)":"rgb(200,200,200)"}`,
+            backgroundColor: nameLotery===item.nombre?"rgba(0,140,255,0.45)":"rgba(0,100,255,0)",
+            
         }}
         key={`section-${sectionId}`}>
           <ul>
@@ -348,11 +375,8 @@ const ListLotery =()=>{
       ))
       }
 
-      
     </List>
         </Container>
-
-
       </>
     )
     
