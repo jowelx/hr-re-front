@@ -72,9 +72,6 @@ const Bubble4= styled(Box)({
     background:" linear-gradient(80deg, rgb(50,150,210) 0%, rgb(0,210,255) 100%)",
 })
 const Login =()=>{
-    const {darkMode,setDarkMode}=useContext(UserContext)
-
-    const Container =darkMode ===true?ContainerDark:ContainerLight
     const [value,setValues ]=useState({
         user:"",
         password:""

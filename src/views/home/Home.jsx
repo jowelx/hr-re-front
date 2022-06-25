@@ -5,11 +5,13 @@ import { ContainerDark,ContainerLight,ContainerHorizontal } from "src/styles/gen
 import SideMenu from "src/components/Menu";
 import CentralPanel from "./components/container/centralPaner";
 import RightPanel from "./components/container/RightPanel";
+import LeftPanel from "./components/container/LeftPanel";
 import SwitchMode from "src/components/UI/SwitchMode";
 import Header from "./components/Header";
 import { UserContext } from "src/context/userContext";
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import Text from "src/components/UI/Text";
+
 const Wrapper= styled(Box)({
     display:"flex",
     justifyContent:"flex-start",
@@ -22,6 +24,7 @@ const ContMode=styled(Box)({
     justifyContent:"center",
     alignItems:"center",
     flexDirection:"row",
+ 
 })
 const items=[
 'Ventas',
@@ -42,6 +45,8 @@ const ContainerH=styled(ContainerHorizontal)(({darkmode})=>({
 const Home =()=>{
     const {darkMode,lotery,setLotery}=useContext(UserContext)
     const Container = darkMode ===true ?ContainerDark: ContainerLight
+    const[ticketTotal,setTicketTotal]=useState([])
+
     return(
         <>
       <Container>  
@@ -49,13 +54,14 @@ const Home =()=>{
       darkmode={darkMode}
       >
       <SideMenu items={items}/>
-      <Text 
-        size="2vw"
-        text={`Loteria`}/>
+      <Text>
+        Loteria
+      </Text>
       <ContMode>
-      <Text 
-        size="1vw"
-        text="Modo ocuro"/>
+
+        <Text>
+        Modo oscuro  
+        </Text>
       <SwitchMode/>
       </ContMode>
       </ContainerH>
@@ -63,13 +69,25 @@ const Home =()=>{
      <Header setTypeLot={setLotery} />
 
    {  lotery>0&&
-     <Grid container>
-      <Grid item xs={9}>
-        <CentralPanel/>
+     <Grid container  spacing={1.5}>
+      <Grid item xs={6}>
+        <LeftPanel />
       </Grid>
+
       <Grid item xs={3}>
-        <RightPanel />
+        <CentralPanel 
+        ticketTotal={ticketTotal} 
+        setItemTotal={setTicketTotal}
+        />
       </Grid>
+
+      <Grid item xs={3}>
+        <RightPanel 
+       ticketTotal={ticketTotal}
+        setTicketTotal={setTicketTotal}
+        />
+      </Grid>
+      
      </Grid>}
         </Wrapper> 
       </Container>

@@ -29,6 +29,10 @@ import {Dispatch, SetStateAction} from 'react';
   setIslogged:Dispatch<SetStateAction<Boolean>>,
   lotery:number,
   setLotery:Dispatch<SetStateAction<Number>>
+  nameLotery:string,
+  setNameLotery:Dispatch<SetStateAction<String>>
+  time:any,
+  setTime:Dispatch<SetStateAction<[]>>
 }
 export const DefaultUserContext:UserType = {
   user: {
@@ -48,11 +52,14 @@ export const DefaultUserContext:UserType = {
   islogged:true,
   setIslogged:()=>{},
   lotery:0,
-  setLotery:()=>{}
+  setLotery:()=>{},
+  nameLotery:'',
+  setNameLotery:()=>{},
+  time:[],
+  setTime:()=>{},
 };
 
 export const UserContext = createContext(DefaultUserContext);
-
 export default function UserProvider({children}) {
   const [user, setUser] = useState(DefaultUserContext.user);
   const [error, setError]=useState<Error>(DefaultUserContext.error)
@@ -60,6 +67,8 @@ export default function UserProvider({children}) {
   const [darkMode,setDarkMode]=useState(false)
   const [islogged,setIslogged]=useState(false)
   const [lotery,setLotery]=useState(0)
+  const [nameLotery,setNameLotery]=useState('')
+  const [time,setTime]=useState([])
   return (
     <UserContext.Provider value={{
       user, 
@@ -73,7 +82,11 @@ export default function UserProvider({children}) {
       islogged,
       setIslogged,
       lotery,
-      setLotery
+      setLotery,
+      nameLotery,
+      setNameLotery,
+      time,
+      setTime,
       }}>
       {children}
     </UserContext.Provider>

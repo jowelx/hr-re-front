@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { useContext} from "react";
+import { useContext, useEffect} from "react";
 import { UserContext } from "../../../../context/userContext";
 import {  COLOR_DARK_SECOND,  COLOR_DARK_THIRD } from "../../../../constants/consts";
 import { COLOR_LIGHT_SECOND } from "src/constants/consts";
@@ -10,6 +10,8 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import { List } from "@mui/material"
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import ContainerDark from "src/components/UI/Container"
+
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={2} square {...props} />
   ))(({ theme }) => ({
@@ -43,8 +45,7 @@ const Accordion = styled((props) => (
     backgroundColor: darkMode===true?COLOR_DARK_SECOND:COLOR_LIGHT_SECOND,
     borderTop: '1px solid rgba(0, 0, 0, .125)',
   }));
-const Container =styled.div(({darkMode})=>({
-    backgroundColor:darkMode===true?  COLOR_DARK_SECOND :COLOR_LIGHT_SECOND,
+const Container =styled(ContainerDark)({
     width:"100%",
     height:"50vw",
     boxShadow:"-2px 0px 2px 0px rgba(20,20,20,.4)",
@@ -54,7 +55,7 @@ const Container =styled.div(({darkMode})=>({
     flexDirection:"column",
     flexWrap:"wrap"
 
-}))
+})
 
 const Tittle = styled.p(({darkMode})=>({
     width:"90%",
@@ -63,14 +64,16 @@ const Tittle = styled.p(({darkMode})=>({
     alignItems:"flex-start",
     color:darkMode===false ?COLOR_DARK_SECOND:"white"
 }))
-const RightPanel = ()=>{
+
+const RightPanel = ({ticketTotal,setTicketTotal})=>{
     const {darkMode}=useContext(UserContext)
-  
+    useEffect(() =>{
+      console.log(ticketTotal)
+    },[ticketTotal])
+
     return(
         <>
-        <Container
-        darkMode={darkMode}
-        >
+        <Container>
           <List
       sx={{
         width: '100%',
@@ -83,41 +86,19 @@ const RightPanel = ()=>{
       }}
       subheader={<li />}
     >
-      <Accordion >
         <AccordionSummary 
-        
-        expandIcon={< ArrowRightIcon sx={{ color:"rgb(80,220,255)",fontSize: '2rem' }} />}
         darkMode={darkMode}
-        aria-controls="panel1d-content" id="panel1d-header">
+        >
           <Tittle
           darkMode={darkMode}
-
-          >Loterias
-          </Tittle>
-        </AccordionSummary>
-        <AccordionDetails darkMode={darkMode}>
-        <ListLotery />
-        </AccordionDetails>
-      </Accordion>
-      <Accordion >
-        <AccordionSummary 
-        
-        expandIcon={< ArrowRightIcon sx={{ color:"rgb(80,220,255)",fontSize: '2rem' }} />}
-        darkMode={darkMode}
-        aria-controls="panel1d-content" id="panel1d-header">
-          <Tittle
-          darkMode={darkMode}
-
           >Ticket
           </Tittle>
         </AccordionSummary>
         <AccordionDetails darkMode={darkMode}>
-        <Total/>
+        <Total ticketTotal={ticketTotal} />
         </AccordionDetails>
-      </Accordion>
+
       </List>
-         
-           
         </Container>
         </>
     )

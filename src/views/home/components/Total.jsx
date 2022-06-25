@@ -6,113 +6,106 @@ import Button from '@mui/material/Button';
 import { List } from "@mui/material"
 import SendIcon from '@mui/icons-material/Send';
 import DeleteIcon from '@mui/icons-material/Delete';
-const Container =styled.div(({darkMode})=>({
+import ContainerDark from "src/components/UI/Container";
+
+const Container =styled(ContainerDark)({
     marginTop:"5px",
-    backgroundColor:darkMode===true?COLOR_DARK_THIRD:COLOR_LIGHT_SECOND,
     width:"95%",
     height: "400px",
     borderRadius:"5px",
     boxShadow:"-1px 1px 2px .1px rgba(20,20,20,.5)",
     padding:"5px"
-}))
+})
 
 const ButtonPrint = styled(Button)({
-
     margin:"0px 10px"
 })
+
 const ContainerButton=styled.div({
 marginTop:"10px"
-
 })
+
 const TotalPrice=styled.p(({darkMode})=>({
-    color:darkMode===false ?COLOR_DARK_SECOND:"white"
+    color:darkMode===false ?COLOR_DARK_SECOND:"white",
+    
+    margin: 5,
 }))
+
 const ContainerPrice=styled.div({
 display:"flex",
-padding:"0px 20px",
-justifyContent:"space-between",
-flexDirection:"row"
+justifyContent:"flex-start",
+flexDirection:"row",
+
+})
+const ContainerPriceTotal=styled.div({
+    display:"flex",
+    justifyContent:"space-between",
+    flexDirection:"row",
+    
+    })
+const ListTime=styled.div({
+    
 })
 
-const tiket=[
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-    {
-        Tiket:"Numero",
-        monto:3000
-    },
-]
-const Total =()=>{
-    const [price,setPrice]=useState(0)
+
+const Total =({ticketTotal,setItemTotal})=>{
+    let price=0
+  console.log(ticketTotal)
     const {darkMode}=useContext(UserContext)
     return(
      <>
-  <Container darkMode={darkMode}>
+     
+  <Container>
   <List
       sx={{
         width: '100%',
         maxWidth: 360,
+        maxHeight: 300,
         position: 'relative',
         overflow: 'auto',
-        maxHeight: 350,
-     
+       
         '& ul': { padding: 0 },
       }}
       subheader={<li />}
     >
-{tiket.map((item,i)=>{
+     <ul>Loteria</ul>   
+{ticketTotal?.map((item,i)=>{
     return(
         <ContainerPrice>
 <TotalPrice  darkMode={darkMode}>
-    {item.Tiket} {i+1}
+    {item.Numero}
 </TotalPrice>
+
+<ListTime>
+    -- 4:00 PM
+</ListTime>
+
 <TotalPrice darkMode={darkMode}>
-    {item.monto}
+    {item.Precio}
 </TotalPrice>
 </ContainerPrice>
     )
 })}
-        
     </List>
 
-<ContainerPrice>
+<ContainerPriceTotal>
 <TotalPrice  darkMode={darkMode}>
     Total
 </TotalPrice>
 <TotalPrice darkMode={darkMode}>
-    {price}
+{ticketTotal?.map((item,i)=>{
+   
+    price+= parseFloat(item.Precio)
+    return(
+        <>
+       {i===ticketTotal.length-1&&
+        `${price}$` }
+    
+    </> )
+   
+})}
 </TotalPrice>
-</ContainerPrice>
+</ContainerPriceTotal>
 
   </Container>
 <ContainerButton>
