@@ -95,7 +95,10 @@ const RightPanel = ({ticketTotal,setTicketTotal})=>{
           </Tittle>
         </AccordionSummary>
         <AccordionDetails darkMode={darkMode}>
-        <Total ticketTotal={ticketTotal} />
+        <Total
+         ticketTotal={ticketTotal}
+         setTicketTotal={setTicketTotal}
+         />
         </AccordionDetails>
 
       </List>

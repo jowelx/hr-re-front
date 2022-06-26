@@ -24,6 +24,7 @@ const ContMode=styled(Box)({
     justifyContent:"center",
     alignItems:"center",
     flexDirection:"row",
+ 
 })
 const items=[
 'Ventas',

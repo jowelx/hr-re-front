@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "src/context/userContext";
 import { useEffect } from "react";
 import { animals,lagranjita,guacharo } from "src/components/Animal";
-
+import { List } from "@mui/material"
 
 const ContainerImg = styled.div({
     width: "100%",
@@ -29,6 +29,17 @@ useEffect(()=>{
 },[nameLotery])
 
 return(
+    <List
+    sx={{
+      width: '100%',
+    
+      position: 'relative',
+      overflow: 'auto',
+      maxHeight: 550,
+      '& ul': { padding: 0 },
+    }}
+    subheader={<li />}
+  >
 <Grid container spacing={0.5}
             justifyContent="center">
                 {data.map((item,index)=>{
@@ -47,6 +58,7 @@ return(
                 )
                 }
             </Grid>
+            </List>
             )
             }
 

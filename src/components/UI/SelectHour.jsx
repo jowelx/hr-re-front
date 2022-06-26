@@ -1,56 +1,51 @@
 import * as React from 'react';
 import styled from "@emotion/styled"
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Grid } from '@mui/material';
-import { red } from '@mui/material/colors';
 import { UserContext } from "../../context/userContext"
-import { useContext, useEffect, useState } from "react"
-
+import { useContext} from "react"
+import { useState } from 'react';
 const Time = styled.li(({darkMode})=>({
   display:"flex",
-  alignItems:"flex-start",
-  width: "100%",
-  backgroundColor: "blue",
-  
+  width: "80%",
+  padding:"10px 10px",
+  cursor:"pointer",
+  userSelect:" none",
+  borderRadius:"8px",
+  marginBottom:"5px"
+ 
 }))
 
-
-const SelectionHours=()=> {
+const Container =styled.div({
+  width:"100%",
+  margin:0,
+  backgroundColor:"white",
+  padding:"0px 10px"
+})
+const SelectionHours=({change,pm,setPm,am,setAm})=> {
   const {time}=useContext(UserContext)
+  
   return (
  
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-          sx={{
-            backgroundColor: "red",
-          }}
-        >
-          <Typography>Loteria Hora</Typography>
-        </AccordionSummary>
-          
-        
-        <AccordionDetails sx={{
-        width: '100%',
-        maxWidth: 265,
-        position: 'relative',
-        overflow: 'auto',
-        maxHeight: 90,
-        backgroundColor: "black",
-        '& ul': { padding: 0 },
-      }}>
-       
-        <Grid container spacing={1}>
+ 
+       <Container>
+  <Grid container spacing={1}>
         <Grid item xs={6}>
         {time.am?.map((item,sectionId) =>{
             return(
-              <Time>
+              <Time 
+              style={{
+                
+                backgroundColor:am?.index===sectionId?"rgba(0,140,255,0.45)":"rgba(0,100,255,0)",
+                boxShadow:am?.index===sectionId?"0px 1px 1px 0px rgba(20,20,20,.4)":"0px 1px 1px 0px rgba(20,20,20,0)"
+              }}
+              onClick={()=>{
+                setAm({
+                  value:item,
+                 index: sectionId
+                  });
+                setPm(null);
+              
+              }}>
                 {item}
               </Time>
             )
@@ -62,7 +57,23 @@ const SelectionHours=()=> {
          <Grid item xs={6}>
          {time.pm?.map((item,sectionId) =>{
             return(
-              <Time>
+              <Time
+              style={{
+                
+                
+                backgroundColor:pm?.index===sectionId?"rgba(0,140,255,0.45)":"rgba(0,100,255,0)",
+                boxShadow:pm?.index===sectionId?"0px 1px 1px 0px rgba(20,20,20,.4)":"0px 1px 1px 0px rgba(20,20,20,0)"
+            
+            }}
+              onClick={()=>{
+                setPm({
+                  value:item,
+                 index: sectionId
+                  });
+                setAm(null);
+              
+              }}
+              >
                 {item}
               </Time>
             )
@@ -72,9 +83,9 @@ const SelectionHours=()=> {
 
          </Grid>
          </Grid>
-     </AccordionDetails>
+       </Container>
       
-      </Accordion>
+
   );
 }
 

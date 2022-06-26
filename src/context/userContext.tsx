@@ -58,7 +58,6 @@ export const DefaultUserContext:UserType = {
   time:[],
   setTime:()=>{},
 };
-
 export const UserContext = createContext(DefaultUserContext);
 export default function UserProvider({children}) {
   const [user, setUser] = useState(DefaultUserContext.user);

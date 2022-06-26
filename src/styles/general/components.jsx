@@ -11,7 +11,7 @@ export const ContainerDark = styled(Box)({
     width:"100%",
     flexDirection:"column",
     height: '100vh',
-    paddingTop:"5px",
+ 
    
   })
   export const ContainerLight = styled(Box)({
@@ -22,7 +22,7 @@ export const ContainerDark = styled(Box)({
     width:"100%",
     flexDirection:"column",
     height: '100vh',
-    paddingTop:"5px",
+  
   
   })
   export const ContainerHorizontal=styled(Box)({
