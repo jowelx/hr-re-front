@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { useContext, useState} from "react";
+import { useContext, useEffect, useState} from "react";
 import { UserContext } from "../../../../context/userContext";
 import {  COLOR_DARK_SECOND,  COLOR_DARK_THIRD } from "../../../../constants/consts";
 import { COLOR_LIGHT_SECOND } from "src/constants/consts";
@@ -82,8 +82,8 @@ const ContainerAgg=styled.div({
 const CentralPanel = ({ticketTotal,setItemTotal})=>{
     const {darkMode}=useContext(UserContext)
     let ticket=[]
-    const [am,setAm]=useState("")
-    const [pm,setPm]=useState("")
+    const [am,setAm]=useState(null)
+    const [pm,setPm]=useState(null)
     const [ticketItem,setTicketItem]=useState({
       Numero: "",
       Precio: "",
@@ -96,7 +96,17 @@ const CentralPanel = ({ticketTotal,setItemTotal})=>{
      
       setTicketItem({...ticketItem, [props]:event.target.value})
     }
+useEffect(()=>{
+  if(am!=null){
+    console.log(ticketItem)
+ setTicketItem({...ticketItem, hora:am})
+  }else{
+  setTicketItem({...ticketItem, hora:pm})
+  }
+  
 
+
+},[pm,am])
     return(
         <>
         <Container

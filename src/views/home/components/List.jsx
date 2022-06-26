@@ -23,7 +23,7 @@ const Tittle = styled.p(({darkMode})=>({
 
 const sinSigno=[
   {
-nombre:"TachiraA",
+nombre:"Tachira A",
 horas:{
   pm:["1:00 PM",
     "4:40 PM",
@@ -31,7 +31,7 @@ horas:{
   }
   },
   {
-    nombre:"TachiraB",
+    nombre:"Tachira B",
     horas:{
       pm:["1:00 PM",
         "4:40 PM",
@@ -39,7 +39,7 @@ horas:{
       }
       },
       {
-        nombre:"TachiraC",
+        nombre:"Tachira C",
         horas:{
           pm:["1:00 PM",
             "4:40 PM",
@@ -47,7 +47,7 @@ horas:{
           }
           },
           {
-            nombre:"TripleGana",
+            nombre:"Triple Gana",
             horas:{
               pm:["1:00 PM",
                 "4:00 PM",
@@ -55,7 +55,7 @@ horas:{
               }
         },
         {
-          nombre:"SuperGana",
+          nombre:"Super Gana",
           horas:{
             pm:["1:00 PM",
               "4:00 PM",
@@ -64,7 +64,7 @@ horas:{
             },
 
             {
-              nombre:"Ñapagana",
+              nombre:"Ñapa Gana",
               horas:{
                 am:["9:00 AM",
                   "10:00 AM",
@@ -82,7 +82,7 @@ horas:{
                 }
                 },
                 {
-                  nombre:"Tropigana_Animales",
+                  nombre:"Tropigana Animales",
                   horas:{
                     am:["9:00 AM",
                       "10:00 AM",
@@ -104,7 +104,7 @@ horas:{
 ]
 const conSigno=[
   {
-    nombre:"triple_gana",
+    nombre:"Triple Gana",
     horas:{
       pm:["1:00 PM",
         "4:00 PM",
@@ -112,7 +112,7 @@ const conSigno=[
       }
   },
   {
-    nombre:"Triple_Zodiacal",
+    nombre:"Triple Zodiacal",
     horas:{
       pm:["1:00 PM",
         "4:40 PM",
@@ -120,7 +120,7 @@ const conSigno=[
       }
   },
   {
-    nombre:"SuperGana 4 cifras",
+    nombre:"SuperGana 4 Cifras",
     horas:{
       pm:["1:00 PM",
         "4:00 PM",
@@ -130,7 +130,7 @@ const conSigno=[
 ]
 const Cuatro_cifras=[
   {
-    nombre:"superGana",
+    nombre:"Super Gana",
     horas:{
     pm:["1:00 PM",
       "4:00 PM",
@@ -138,102 +138,102 @@ const Cuatro_cifras=[
     }
   },
   {
-    nombre:"TolimaNoche",
+    nombre:"Tolima Noche",
     horas:{
       pm:["8:00 PM"]
       }
   },
   {
-    nombre:"CundinamarcaNoche",
+    nombre:"Cundinamarca Noche",
     horas:{
       pm:["8:00 PM"]
       }
   },
   {
-    nombre:"DoradoDia",
+    nombre:"Dorado Dia",
     horas:{
       pm:["2:00 PM"]
       }
   },
   {
-    nombre:"MotilonDia",
+    nombre:"Motilon Dia",
     horas:{
       pm:["3:00 PM"]
       }
   },
   {
-    nombre:"MotilonNoche",
+    nombre:"Motilon Noche",
     horas:{
       pm:["8:00 PM"]
       }
   },
   {
-    nombre:"AstrolunaNoche",
+    nombre:"Astroluna Noche",
     horas:{
       pm:["8:00 PM"]
       }
   },
   {
-    nombre:"AstrosolDia",
+    nombre:"Astrosol Dia",
     horas:{
       pm:["3:00 PM"]
       }
   },
   {
-    nombre:"CafeteritoDia",
+    nombre:"Cafeterito Dia",
     horas:{
       pm:["3:00 PM"]
       }
   },
   {
-    nombre:"CafeteritoNoche",
+    nombre:"Cafeterito Noche",
     horas:{
       pm:["8:00 PM"]
       }
   },
   {
-    nombre:"ChonticoDia",
+    nombre:"Chontico Dia",
     horas:{
       pm:["3:00 PM"]
       }
   },
   {
-    nombre:"ChonticoNoche",
+    nombre:"Chontico Noche",
     horas:{
       pm:["8:00 PM"]
       }
   },
   {
-    nombre:"PaisitaDia",
+    nombre:"Paisita Dia",
     horas:{
       pm:["3:00 PM"]
       }
   },
   {
-    nombre:"PaisitaNoche",
+    nombre:"Paisita Noche",
     horas:{
       pm:["8:00 PM"]
       }
   },
   {
-    nombre:"CulonaDia",
+    nombre:"Culona Dia",
     horas:{
       pm:["3:00 PM"]
       }
   },
   {
-    nombre:"CulonaNoche",
+    nombre:"Culona Noche",
     horas:{
       pm:["8:00 PM"]
       }
   },
   {
-    nombre:"SinuanoDia",
+    nombre:"Sinuano Dia",
     horas:{
       pm:["3:00 PM"]
       }
   },
-  {nombre:"SinuanoNoche",
+  {nombre:"Sinuano Noche",
   horas:{
     pm:["8:00 PM"]
     }
@@ -241,7 +241,7 @@ const Cuatro_cifras=[
 ]
 const Animalitos=[
   {
-    nombre:"TropiGana",
+    nombre:"Tropi Gana",
     horas:{
     am:["9:00 AM",
       "10:00 AM",
@@ -257,7 +257,7 @@ const Animalitos=[
     }
   },
   {
-    nombre:"LottoActivo",
+    nombre:"Lotto Activo",
     horas:{
       am:["9:00 AM",
         "10:00 AM",
@@ -273,7 +273,7 @@ const Animalitos=[
       }
   },
   {
-    nombre:"LaGranjita",
+    nombre:"La Granjita",
     horas:{
       am:["9:00 AM",
         "10:00 AM",
@@ -289,7 +289,7 @@ const Animalitos=[
       }
   },
   {
-    nombre:"GranjaMillonaria",
+    nombre:"Granja Millonaria",
     horas:{
       am:["9:00 AM",
         "10:00 AM",
@@ -305,7 +305,7 @@ const Animalitos=[
       }
   },
   {
-    nombre:"GuacharoActivo",
+    nombre:"Guacharo Activo",
     horas:{
       am:["9:00 AM",
         "10:00 AM",
