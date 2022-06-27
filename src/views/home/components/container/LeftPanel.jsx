@@ -6,6 +6,7 @@ import { COLOR_DARK_FIRST, COLOR_LIGHT_FIRST } from "../../../../constants/const
 import { COLOR_LIGHT_SECOND } from "src/constants/consts";
 import ContainerDark from "src/components/UI/Container";
 import ImgAnimal from "./components/animal";
+import ImgConSigno from "./components/conSigno"
 
 const Container =styled(ContainerDark)({   
     width:"100%",
@@ -18,6 +19,7 @@ const LeftPanel=()=>{
         <>
         <Container>
         {lotery===4&&<ImgAnimal />}
+        {lotery===2&&<ImgConSigno />}
 
         </Container>
         </>
