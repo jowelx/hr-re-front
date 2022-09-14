@@ -21,11 +21,11 @@ const ImgAnimal=()=>{
 const {darkMode,nameLotery}=useContext(UserContext)
 const [data,setData]=useState([])
 useEffect(()=>{
-    nameLotery==="LaGranjita"&& setData(lagranjita)
-    nameLotery==="LaGranjita"&& setData(lagranjita)
-    nameLotery==="LaGranjita"&& setData(lagranjita)
-    nameLotery==="GranjaMillonaria"&& setData(animals)
-    nameLotery==="GuacharoActivo"&& setData(guacharo)
+    nameLotery==="La Granjita"&& setData(lagranjita)
+    nameLotery==="La Granjita"&& setData(lagranjita)
+    nameLotery==="La Granjita"&& setData(lagranjita)
+    nameLotery==="Granja Millonaria"&& setData(animals)
+    nameLotery==="Guacharo Activo"&& setData(guacharo)
 },[nameLotery])
 
 return(

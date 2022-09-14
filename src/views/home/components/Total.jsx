@@ -8,7 +8,7 @@ import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
 import SendIcon from '@mui/icons-material/Send';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ContainerDark from "src/components/UI/Container";
-
+import moment from "moment";
 const Container =styled(ContainerDark)({
     marginTop:"5px",
     width:"95%",
@@ -56,9 +56,15 @@ margin:"0px 5px",
 boxShadow:"0px 1px 2px .1px rgb(25,25,25)",
 color:"rgb(80,80,80)"
 })
+const Ul=styled.ul({
+    textAlign:"start",
+    marginLeft:"20px"
+})
 const Total =({ticketTotal,setTicketTotal})=>{
     let price=0
   console.log(ticketTotal)
+  const date=moment().format()
+  const ticketId=parseInt(Math.random() *1000000)
     const {darkMode}=useContext(UserContext)
     return(
      <>
@@ -76,7 +82,9 @@ const Total =({ticketTotal,setTicketTotal})=>{
       }}
       subheader={<li />}
     >
-     <ul>Loteria</ul>  
+     <Ul>Loterias Alex</Ul>  
+     <Ul>Fecha {date}</Ul>  
+     <Ul>TICKET NO: { ticketId}</Ul>
 
 
 
@@ -86,7 +94,7 @@ const Total =({ticketTotal,setTicketTotal})=>{
             <Grid container  >
                 <Grid item xs={3}>
                 <TotalPrice  darkMode={darkMode}>
-    -{item.Numero}
+    #{item.Numero}
 </TotalPrice>
                 </Grid>
 
