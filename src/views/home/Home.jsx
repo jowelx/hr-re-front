@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { Box } from "@mui/material"
+import { Box, Button } from "@mui/material"
 import { Grid } from "@mui/material";
 import { ContainerDark,ContainerLight,ContainerHorizontal } from "src/styles/general/components";
 import SideMenu from "src/components/Menu";
@@ -7,11 +7,13 @@ import CentralPanel from "./components/container/centralPaner";
 import RightPanel from "./components/container/RightPanel";
 import LeftPanel from "./components/container/LeftPanel";
 import SwitchMode from "src/components/UI/SwitchMode";
+import History from "../History/History";
 import Header from "./components/Header";
 import { UserContext } from "src/context/userContext";
-import { useContext,useState } from "react";
+import { useContext,useState,useEffect } from "react";
 import Text from "src/components/UI/Text";
-
+import InputData from "../Input/Index";
+import BooksScreen from "../Books/index";
 const Wrapper= styled(Box)({
     display:"flex",
     justifyContent:"flex-start",
@@ -27,35 +29,38 @@ const ContMode=styled(Box)({
  
 })
 const items=[
-'Ventas',
-'Premiacion',
-'Reporte',
-'Configuracion',
-'Utilidades',
-'Actualizar',
-'Estadistica',
+'Panel Principal',
+'Facturas',
+'Historial',
 'Salir',
 ]
-
 const ContainerH=styled(ContainerHorizontal)(({darkmode})=>({
- 
   boxShadow:darkmode===true?"0 2px 3px 0 rgb(10,10,10)":"0 2px 2px 0 rgb(220,220,220)",
   width:"100%",
 }))
 const Home =()=>{
-    const {darkMode,lotery,setLotery}=useContext(UserContext)
+    const {darkMode,screen,setScreen}=useContext(UserContext)
     const Container = darkMode ===true ?ContainerDark: ContainerLight
     const[ticketTotal,setTicketTotal]=useState([])
+    const [menu,setMenu]=useState(0)
 
+useEffect(()=>{
+  console.log(screen)
+  console.log(menu)
+},[screen])
     return(
         <>
       <Container>  
       <ContainerH 
       darkmode={darkMode}
       >
-      <SideMenu items={items}/>
+      <SideMenu 
+      menu={menu}
+      setMenu={setMenu}
+      items={items}
+      />
       <Text>
-        Loteria
+        Sistema contable
       </Text>
       <ContMode>
 
@@ -66,30 +71,13 @@ const Home =()=>{
       </ContMode>
       </ContainerH>
       <Wrapper>
-     <Header setTypeLot={setLotery} />
-
-   {  lotery>0&&
-     <Grid container  spacing={1.5}>
-      <Grid item xs={6}>
-        <LeftPanel />
-      </Grid>
-
-      <Grid item xs={3}>
-        <CentralPanel 
-        ticketTotal={ticketTotal} 
-        setItemTotal={setTicketTotal}
-        />
-      </Grid>
-
-      <Grid item xs={3}>
-        <RightPanel 
-       ticketTotal={ticketTotal}
-        setTicketTotal={setTicketTotal}
-        />
-      </Grid>
-      
-     </Grid>}
+     <Header type={menu} setScreen={setScreen} />
+     {menu===0&&<BooksScreen screen={screen}/>}
+     {menu===1&&<InputData screen={screen}/>}
+     {menu===2&&<History/>}
         </Wrapper> 
+
+
       </Container>
         </>
     )

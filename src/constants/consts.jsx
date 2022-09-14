@@ -1,5 +1,6 @@
 
 //-----------------Colors------------------------//
+export const COLOR_BLUE='rgba(0,180,235,1)'
 //------------------DARK-------------------------//
 export const COLOR_PRYMARY_DARK   = 'rgb(58,232,214)' 
 export const COLOR_SECONDARY_DARK = 'rgb(41,255,151)' 

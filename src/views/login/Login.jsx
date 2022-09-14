@@ -112,12 +112,6 @@ const Login =()=>{
         />
   </Link>
 
-        <Link to="/register" style={{width:"100%",textDecoration:"none"}}>
-        <ButtonDark
-        name={"Registrarse"}
-        />
-
-        </Link>
        
        
        </Wrapper>
