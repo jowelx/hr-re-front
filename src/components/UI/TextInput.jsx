@@ -59,7 +59,7 @@ const TextInput =({label, onChange,style,error,password,value})=>{
     <FormControl style={style} variant="standard">
     <InputLabel error={error} htmlFor="standard-adornment-password">{label}</InputLabel>
     <Input
-   error={error}
+      error={error}
       id="standard-adornment-password"
       type={values.showPassword ? 'text' : 'password'}
       value={value}
@@ -83,11 +83,10 @@ const TextInput =({label, onChange,style,error,password,value})=>{
     :
 <FormControl      style={style} >
 <InputText
-     variant="standard"
+     variant="outlined"
      id="standard-basic"
      label={label}
      onChange={onChange}
-
      value={value}
      error={error}
   />

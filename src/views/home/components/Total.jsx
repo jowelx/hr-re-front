@@ -117,7 +117,6 @@ const Total =({ticketTotal,setTicketTotal})=>{
 </ContainerPrice>
     )
 })}
-
     </List>
 
 <ContainerPriceTotal>
