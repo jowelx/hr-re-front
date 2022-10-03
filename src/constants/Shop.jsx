@@ -21,8 +21,9 @@ export const rows1=[
     "Creditos Fiscales Totalmente deducible",
     "Creditos Fiscales Parcialmente deducible",
     "Creditos Fiscales Totalmente deducidas",
+    
     "Total Creditos Fiscales Deducibles",
-
+    "",
     "***Totales sin Centimos***",
     "Total de las compras de importacion afectadas sólo en alicuota general",
     "Total de las compras de importacion afectadas  en alicuota general + Adicional",
@@ -39,8 +40,8 @@ export const rows1=[
     "Total General",
     "Creditos Fiscales Totalmente deducible",
     "Creditos Fiscales Parcialmente deducible",
-    "Creditos Fiscales Totalmente deducidas",
     "Total Creditos Fiscales Deducibles",
+    "Ajuste a los creditos fiscales de periodos anteriores"
 ]
-export const rows2="Base Inponible"
+export const rows2="Base Imponible"
 export const rows3="Credito Fiscal"

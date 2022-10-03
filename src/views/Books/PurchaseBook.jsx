@@ -1,19 +1,19 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import Box from '@mui/material/Box';
 import dayjs from 'dayjs';
 import { DataGrid } from '@mui/x-data-grid';
 import styled from '@emotion/styled';
+import { getAllBill } from 'src/api/api';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import TableComponent from './components/Table';
 import TextField from '@mui/material/TextField';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Grid } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import moment from 'moment';
 const Container=styled.div({
-
 display:"flex",
-
+width:"100%",
 justifyContent:"center"
 })
 const Tittle=styled.p({
@@ -23,18 +23,20 @@ const ContainerDtaPicker=styled.div({
   marginTop:20
 })
 const Wrapper=styled.div({
-  overflow:" scroll",
+  overflow:" auto",
   marginTop:20,
-  width:"70vw",
-  height:"30vw",
+  width:"100%",
+  height:"32vw",
   padding:"1vw 0vw"
 })
 const PurchaseBook=()=>{
   const [value, setValue] = React.useState(dayjs(moment().format()));
-
-  const handleChange = (newValue) => {
-    setValue(newValue);
-  };
+  const [data,setData]=useState([])
+  useEffect(()=>{
+   getAllBill().then(e=>setData(e.data.filter(e=>e.type==='Egreso'&&moment(e.date).format("YYYY-MM")==moment(value.$d).format("YYYY-MM"))))
+   console.log(moment(value.$d).format("YYYY-MM"))
+  },[value])
+  
     return(
     <>
   <Container>
@@ -46,12 +48,16 @@ const PurchaseBook=()=>{
        
         <ContainerDtaPicker>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DesktopDatePicker
-          label="Date desktop"
-          inputFormat="MM/DD/YYYY"
+        <DatePicker
+          views={['year', 'month']}
+          label="Año y mes"
+          minDate={dayjs('2012-03-01')}
+          maxDate={dayjs('2023-06-01')}
           value={value}
-          onChange={handleChange}
-          renderInput={(params) => <TextField {...params} />}
+          onChange={(newValue) => {
+            setValue(newValue);
+          }}
+          renderInput={(params) => <TextField {...params} helperText={null} />}
         />
    
 
@@ -59,14 +65,16 @@ const PurchaseBook=()=>{
         </ContainerDtaPicker>
     
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={11}>
         <Wrapper>
        
         <TableComponent 
-              type={"shop"}
-    row={40}
-    column={14}
-    />
+     
+        type={"shop"}
+        data={data}
+        row={42}
+        column={14}
+        />
         </Wrapper>
    
       </Grid>

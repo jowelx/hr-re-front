@@ -27,7 +27,7 @@ import {
   } from 'src/constants/consts';
 import { useContext } from 'react';
 import { UserContext } from 'src/context/userContext';
-
+import SettingsIcon from '@mui/icons-material/Settings';
  const SideMenu=({items,setMenu,menu})=> {
     const {darkMode}=useContext(UserContext)
     const [state, setState] = React.useState({
@@ -46,7 +46,7 @@ import { UserContext } from 'src/context/userContext';
   };
 
   const list = ({anchor,items}) => {
-    console.log(items)
+   // console.log(items)
       return(
 <Box
       style={{height:"100%",backgroundColor:COLOR_DARK_FIRST}}
@@ -68,6 +68,7 @@ import { UserContext } from 'src/context/userContext';
                 {index===0 &&<DashboardIcon style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}} /> }
                 {index===1 &&<ArticleIcon style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}} /> }
                 {index===2 &&<HistoryIcon style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}} /> }
+                {index===3 &&<SettingsIcon style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>

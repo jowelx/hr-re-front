@@ -4,6 +4,7 @@ import { useEffect,useState } from 'react'
 import styled from '@emotion/styled'
 import { Grid } from '@mui/material'
 import {Divider} from '@mui/material'
+import moment from 'moment'
 const Wrapper=styled.div({
     marginTop:10,
     width:"90%",
@@ -72,7 +73,7 @@ const History=()=>{
                         Fecha:
                         </Text>
                         <Text2>
-                        {i.date}
+                        {moment(i.date).format("YYYY-MM") }
                         </Text2>
                         </ContainerInfo>
                     <Divider/>

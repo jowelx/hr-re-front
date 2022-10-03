@@ -1,11 +1,7 @@
 import styled from "@emotion/styled"
-import { Box, Button } from "@mui/material"
-import { Grid } from "@mui/material";
+import { Box} from "@mui/material"
 import { ContainerDark,ContainerLight,ContainerHorizontal } from "src/styles/general/components";
 import SideMenu from "src/components/Menu";
-import CentralPanel from "./components/container/centralPaner";
-import RightPanel from "./components/container/RightPanel";
-import LeftPanel from "./components/container/LeftPanel";
 import SwitchMode from "src/components/UI/SwitchMode";
 import History from "../History/History";
 import Header from "./components/Header";
@@ -14,6 +10,7 @@ import { useContext,useState,useEffect } from "react";
 import Text from "src/components/UI/Text";
 import InputData from "../Input/Index";
 import BooksScreen from "../Books/index";
+import ConfigurationScreen from "../Configuration/ConfigurationScreen";
 const Wrapper= styled(Box)({
     display:"flex",
     justifyContent:"flex-start",
@@ -32,6 +29,7 @@ const items=[
 'Panel Principal',
 'Facturas',
 'Historial',
+'Configuracion',
 'Salir',
 ]
 const ContainerH=styled(ContainerHorizontal)(({darkmode})=>({
@@ -41,7 +39,7 @@ const ContainerH=styled(ContainerHorizontal)(({darkmode})=>({
 const Home =()=>{
     const {darkMode,screen,setScreen}=useContext(UserContext)
     const Container = darkMode ===true ?ContainerDark: ContainerLight
-    const[ticketTotal,setTicketTotal]=useState([])
+    const [ticketTotal,setTicketTotal]=useState([])
     const [menu,setMenu]=useState(0)
 
 useEffect(()=>{
@@ -73,8 +71,9 @@ useEffect(()=>{
       <Wrapper>
      <Header type={menu} setScreen={setScreen} />
      {menu===0&&<BooksScreen screen={screen}/>}
-     {menu===1&&<InputData screen={screen}/>}
+     {menu===1&&<InputData   screen={screen}/>}
      {menu===2&&<History/>}
+     {menu===3&&<ConfigurationScreen/>}
         </Wrapper> 
 
 

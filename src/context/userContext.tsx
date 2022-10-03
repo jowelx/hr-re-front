@@ -13,6 +13,8 @@ import {Dispatch, SetStateAction} from 'react';
 
 
  type UserType={
+  impuestos:any,
+  setImpuestos:Dispatch<SetStateAction<{}>>,
   setUser:Dispatch<SetStateAction<{}>>
   user:UserMutation,
   setError:Dispatch<SetStateAction<String>>,
@@ -34,6 +36,12 @@ import {Dispatch, SetStateAction} from 'react';
 
 }
 export const DefaultUserContext:UserType = {
+  impuestos:{
+    id:null,
+    creditoFiscal:0,
+    debitoFiscal:0
+  },
+  setImpuestos:()=>{},
   user: {
     avatar:'',
     backgroundImage:'',
@@ -58,6 +66,7 @@ export const DefaultUserContext:UserType = {
   setTime:()=>{},
   loadding:false,
   setLoadding:()=>{},
+
 };
 export const UserContext = createContext(DefaultUserContext);
 export default function UserProvider({children}) {
@@ -70,8 +79,11 @@ export default function UserProvider({children}) {
   const [screen,setScreen]=useState(0)
   const [nameLotery,setNameLotery]=useState('')
   const [time,setTime]=useState([])
+  const [impuestos,setImpuestos]=useState(DefaultUserContext.impuestos)
   return (
     <UserContext.Provider value={{
+      impuestos,
+      setImpuestos,
       user, 
       setUser,
       error,

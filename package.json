@@ -2,6 +2,7 @@
   "name": "hr-re-front",
   "version": "0.1.0",
   "private": true,
+  "license":"MIT",
   "main": "public/electron.js",
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -32,6 +33,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "pack":"build --dir",
+    "dist":"build",
     "electron": "concurrently \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "eslintConfig": {

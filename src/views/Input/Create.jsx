@@ -8,6 +8,12 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import { addBill } from 'src/api/api';
 import { useContext } from 'react';
+import moment from 'moment';
+import dayjs from 'dayjs';
+
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { UserContext } from 'src/context/userContext';
 const Container = styled.div({
     display:"flex",
@@ -37,11 +43,18 @@ const Tipe=[
 const Tittle=styled.p({
     fontSize:20
 })
-
+const ContainerDate=styled.div({
+    marginBottom:20
+})
 const Create =()=>{
+    
+    const [value, setValue] = React.useState(dayjs(moment().format()));
     const {setLoadding,setError,setMessage}=useContext(UserContext)
+    const handleChangeDate = (newValue) => {
+        setValue(newValue);
+    };
     const [data,setData]=useState({
-        date:"",
+        date:value,
         serial:"",
         value:"",
         type:"Ingreso"
@@ -90,14 +103,26 @@ const Create =()=>{
     </Tittle>
      <Wrapper>
      <Container>
-     <TextInput 
-       onChange={handleChange("date")}
-       value={data.date}
-     id="outlined-basic" label="Fecha de la factura" variant="outlined" />
-     <TextInput 
-        onChange={handleChange("serial")}
-        value={data.serial}
-     id="outlined-basic" label="N#" variant="outlined" />
+     <ContainerDate>
+     <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DesktopDatePicker
+    
+          label="Date desktop"
+          inputFormat="MM/DD/YYYY"
+          value={value}
+          onChange={handleChangeDate}
+          renderInput={(params) => <TextField {...params} />}
+        />
+   
+
+      </LocalizationProvider>
+     </ContainerDate>
+ 
+      <TextInput 
+       onChange={handleChange("serial")}
+       value={data.serial}
+       id="outlined-basic" 
+       label="N# de factura" variant="outlined" />
      <TextInput 
      onChange={handleChange("value")}
      value={data.value}
