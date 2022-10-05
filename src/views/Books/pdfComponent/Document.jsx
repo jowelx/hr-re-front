@@ -135,6 +135,12 @@ const styles = StyleSheet.create({
     },
     SmallFont:{
         fontSize:10
+    },
+    Container:{
+        display:"flex",
+        marginLeft:"10%",
+        justifyContent:"center",
+        alignContent:"center"
     }
   });
 const  DocumentPDF =({type,column,row,data,impuestos})=>{
@@ -168,137 +174,140 @@ const  DocumentPDF =({type,column,row,data,impuestos})=>{
     size="A0" 
     style={styles.page}>
     
-  
-           { type==="shop"&&
-           <View style={styles.Table}>
-        
-        {rows.map((i,indexRow)=>{
-    return (
-    <View style={styles.Column}>
-        
-         {columns.map((r,index)=>{
-        return(
-           <View style={
-                index   ===0 ?styles.row:styles.rowBasic}>
-            {
-                index   ===0 ?
-                indexRow===1 ? <  Text style={styles.Row1StrongLeft}>  {rows1?.[indexRow]} </ Text>:
-                indexRow===3 ? <  Text style={styles.Row1StrongLeft}>  {rows1?.[indexRow]} </ Text>:
-                indexRow===4 ? <  Text style={styles.SmallFont}>       {rows1?.[indexRow]} </ Text>:
-                indexRow===24? <  Text style={styles.Row1StrongCenter}>{rows1?.[indexRow]} </ Text>:
-                <Text>{rows1?.[indexRow]}</ Text>:
-                index===1?<Text style={styles.Row2}>
-                {indexRow===3&&rows2}
-                {
-                indexRow>=6&&indexRow<23?indexRow===9&& data.length>0
-                ?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(amount1) 
-                :Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)
-                :indexRow>24&&indexRow===28&&data.length>0
-                ?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(amount1) 
-                :indexRow>24&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)
-                }
-                </Text>:  
-                index===2?<Text style={styles.Row2}>
-                {
-                indexRow>=6&&indexRow<23&&indexRow===9&& data.length>0
-                ?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format((amount1*impuestos.creditoFiscal)/100)
-                :indexRow>=6&&indexRow<23&&indexRow===9&& data.length===0&&
-                Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)
-                }
-             {indexRow===3&&rows3}
-             {
-             indexRow>=6 &&
-             indexRow< 23&&
-             indexRow!=18&&
-             indexRow!=9 &&
-             indexRow!=19&&
-             indexRow!=21
-             ?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0):
-             indexRow >24&&
-             indexRow!=28&&
-             indexRow!=37&&
-             indexRow!=38&&
-             indexRow!=40&&
-             Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)}
-             {indexRow===18&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(amount1+((amount1*impuestos.creditoFiscal)/100)):data.length===0&&indexRow===18&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)}
-             {indexRow===19&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format((amount1*impuestos.creditoFiscal)/100):data.length===0&&indexRow===19&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)}
-             {indexRow===21&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format((amount1*impuestos.creditoFiscal)/100):indexRow===21&&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)}
-             {indexRow===28&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(parseInt((amount1*impuestos.creditoFiscal)/100)):indexRow===28&&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)}
-             {indexRow===37&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(parseInt(amount1+((amount1*impuestos.creditoFiscal)/100))):indexRow===37&&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(888)}
-             {indexRow===38&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(parseInt((amount1*impuestos.creditoFiscal)/100)):indexRow===38&&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)}
-             {indexRow===40&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(parseInt((amount1*impuestos.creditoFiscal)/100)):indexRow===40&&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)}
-      
-                </Text>:<Text style={styles.rowBasic}></Text>
-                }
-      
-      </View>
-       )
-        })}
-        </View >
-        )
-})}
-           </View >
-           
-}
-        {type==="sell"&&
-        <View style={styles.Table}>
-        
-        {rows.map((i,indexRow)=>{
-    return (
-    <View style={styles.Column}>
-        
-         {columns.map((r,index)=>{
-        return(
-           <View style={index===0?styles.row:styles.rowBasic}>
-            {
-                index===0?
-                indexRow===1 ? <  Text style={styles.Row1StrongLeft}>  {rowsSell1?.[indexRow]} </ Text>:
-                indexRow===3 ? <  Text style={styles.Row1StrongLeft}>  {rowsSell1?.[indexRow]} </ Text>:
-                indexRow===4 ? <  Text style={styles.SmallFont}>       {rowsSell1?.[indexRow]} </ Text>:
-                indexRow===24? <  Text style={styles.Row1StrongCenter}>{rowsSell1?.[indexRow]} </ Text>:
-                <Text>{rowsSell1?.[indexRow]}</ Text>:
-                index===1?<Text style={styles.Row2}>
-            {indexRow===3&&rowsSell2}
-            {
-            indexRow===8&&data.length>0
-            ?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(amount1)
-            :indexRow===8&&data.length==0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)
-            }
-            {indexRow>=5&&indexRow<13&&indexRow!=8?
-            Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)
-            :indexRow>15&&indexRow!=19
-            &&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)
-            }
-            {
-            indexRow===19&&data.length>0
-            ?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(amount1)
-            :indexRow===19&&data.length==0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)
-            }
-            </Text>:  
-             index   ===2?<Text style={styles.Row2}>
-            {indexRow===3 &&rowsSell3}
-            {indexRow===8 &&data.length>0? Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format((amount1*impuestos.debitoFiscal)/100):indexRow===8 &&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)}
-            {indexRow===19&&data.length>0? Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format((amount1*impuestos.debitoFiscal)/100):indexRow===19&&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)}
-            {
-             indexRow>=5  &&
-             indexRow!=8  &&
-             indexRow<13  ? Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0):
-             indexRow>15  && 
-             indexRow!=19 &&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)
-             }
+  <View style={styles.Container}>
+  { type==="shop"&&
 
-                </Text>:<Text style={styles.rowBasic}></Text>
-                }
-      
-      </View>
-       )
-        })}
-        </View >
-        )
+<View style={styles.Table}>
+
+{rows.map((i,indexRow)=>{
+return (
+<View style={styles.Column}>
+
+{columns.map((r,index)=>{
+return(
+<View style={
+     index   ===0 ?styles.row:styles.rowBasic}>
+ {
+     index   ===0 ?
+     indexRow===1 ? <  Text style={styles.Row1StrongLeft}>  {rows1?.[indexRow]} </ Text>:
+     indexRow===3 ? <  Text style={styles.Row1StrongLeft}>  {rows1?.[indexRow]} </ Text>:
+     indexRow===4 ? <  Text style={styles.SmallFont}>       {rows1?.[indexRow]} </ Text>:
+     indexRow===24? <  Text style={styles.Row1StrongCenter}>{rows1?.[indexRow]} </ Text>:
+     <Text>{rows1?.[indexRow]}</ Text>:
+     index===1?<Text style={styles.Row2}>
+     {indexRow===3&&rows2}
+     {
+     indexRow>=6&&indexRow<23?indexRow===9&& data.length>0
+     ?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(amount1) 
+     :Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)
+     :indexRow>24&&indexRow===28&&data.length>0
+     ?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(amount1) 
+     :indexRow>24&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)
+     }
+     </Text>:  
+     index===2?<Text style={styles.Row2}>
+     {
+     indexRow>=6&&indexRow<23&&indexRow===9&& data.length>0
+     ?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format((amount1*impuestos.creditoFiscal)/100)
+     :indexRow>=6&&indexRow<23&&indexRow===9&& data.length===0&&
+     Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)
+     }
+  {indexRow===3&&rows3}
+  {
+  indexRow>=6 &&
+  indexRow< 23&&
+  indexRow!=18&&
+  indexRow!=9 &&
+  indexRow!=19&&
+  indexRow!=21
+  ?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0):
+  indexRow >24&&
+  indexRow!=28&&
+  indexRow!=37&&
+  indexRow!=38&&
+  indexRow!=40&&
+  Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)}
+  {indexRow===18&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(amount1+((amount1*impuestos.creditoFiscal)/100)):data.length===0&&indexRow===18&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)}
+  {indexRow===19&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format((amount1*impuestos.creditoFiscal)/100):data.length===0&&indexRow===19&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)}
+  {indexRow===21&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format((amount1*impuestos.creditoFiscal)/100):indexRow===21&&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)}
+  {indexRow===28&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(parseInt((amount1*impuestos.creditoFiscal)/100)):indexRow===28&&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)}
+  {indexRow===37&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(parseInt(amount1+((amount1*impuestos.creditoFiscal)/100))):indexRow===37&&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(888)}
+  {indexRow===38&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(parseInt((amount1*impuestos.creditoFiscal)/100)):indexRow===38&&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)}
+  {indexRow===40&&data.length>0?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(parseInt((amount1*impuestos.creditoFiscal)/100)):indexRow===40&&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)}
+
+     </Text>:<Text style={styles.rowBasic}></Text>
+     }
+
+</View>
+)
 })}
-           </View >
-        }
-     
+</View >
+)
+})}
+</View >
+
+}
+{type==="sell"&&
+<View style={styles.Table}>
+
+{rows.map((i,indexRow)=>{
+return (
+<View style={styles.Column}>
+
+{columns.map((r,index)=>{
+return(
+<View style={index===0?styles.row:styles.rowBasic}>
+ {
+     index===0?
+     indexRow===1 ? <  Text style={styles.Row1StrongLeft}>  {rowsSell1?.[indexRow]} </ Text>:
+     indexRow===3 ? <  Text style={styles.Row1StrongLeft}>  {rowsSell1?.[indexRow]} </ Text>:
+     indexRow===4 ? <  Text style={styles.SmallFont}>       {rowsSell1?.[indexRow]} </ Text>:
+     indexRow===24? <  Text style={styles.Row1StrongCenter}>{rowsSell1?.[indexRow]} </ Text>:
+     <Text>{rowsSell1?.[indexRow]}</ Text>:
+     index===1?<Text style={styles.Row2}>
+ {indexRow===3&&rowsSell2}
+ {
+ indexRow===8&&data.length>0
+ ?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(amount1)
+ :indexRow===8&&data.length==0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)
+ }
+ {indexRow>=5&&indexRow<13&&indexRow!=8?
+ Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)
+ :indexRow>15&&indexRow!=19
+ &&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)
+ }
+ {
+ indexRow===19&&data.length>0
+ ?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(amount1)
+ :indexRow===19&&data.length==0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)
+ }
+ </Text>:  
+  index   ===2?<Text style={styles.Row2}>
+ {indexRow===3 &&rowsSell3}
+ {indexRow===8 &&data.length>0? Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format((amount1*impuestos.debitoFiscal)/100):indexRow===8 &&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)}
+ {indexRow===19&&data.length>0? Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format((amount1*impuestos.debitoFiscal)/100):indexRow===19&&data.length===0&&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)}
+ {
+  indexRow>=5  &&
+  indexRow!=8  &&
+  indexRow<13  ? Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0):
+  indexRow>15  && 
+  indexRow!=19 &&Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 0}).format(0)
+  }
+
+     </Text>:<Text style={styles.rowBasic}></Text>
+     }
+
+</View>
+)
+})}
+</View >
+)
+})}
+</View >
+}
+
+  </View>
+          
 
     </Page>
   </Document>

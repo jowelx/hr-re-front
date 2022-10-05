@@ -17,6 +17,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import Looks4OutlinedIcon from '@mui/icons-material/Looks4Outlined';
 import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 import ClearIcon from '@mui/icons-material/Clear';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 const AntTabs = styled(Tabs)(({darkMode}) => ({
     height:20,
     
@@ -93,12 +97,10 @@ export const HeaderOne=({setScreen})=>{
           darkMode={darkMode}
           />
             <AntTab
-          icon={
-          < FeedIcon/>
-        }
+          icon={<FeedIcon/>}
           iconPosition="end"
-           label="Reporte"
-           darkMode={darkMode} 
+          label="Reporte"
+          darkMode={darkMode} 
            />
         </AntTabs>
       </Box>
