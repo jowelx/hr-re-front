@@ -106,7 +106,7 @@ const TableComponent=({type,column,row,data})=>{
          
              index===1?<Row2> 
             {indexRow===3&&rows2}
-              {indexRow>=6&&indexRow<23?indexRow===9&& data.length>0
+            {indexRow>=6&&indexRow<23?indexRow===9&& data.length>0
             ?Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(amount1) 
             :Intl.NumberFormat('en-IN', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(0)
             :indexRow>24&&indexRow===28&&data.length>0
