@@ -29,6 +29,7 @@ ChartJS.register({
 
 const Estadistics = ()=>{
     const options={
+        fill:true,
         responsive:true,
         scales:{
             y:{
@@ -36,20 +37,23 @@ const Estadistics = ()=>{
             }
         }
     }
-    let DataContable=[]
-    const labels=['Enero','Febrero','marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
-    const dataFinal=useMemo(function(){
-        return{
-            datasets:[
-                {
-                    label:'mis datos',
-                    data:DataContable,
-                    tension:0.3
-                },
-            ],
-            labels
-        }
-    },[])
+    
+    const labels=[
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre'
+]
+    const DataContable=[]
+    let dataRelative=0
     const [data,setData]=useState([])
     const [value, setValue] = React.useState(dayjs(moment().format()));
     useEffect(()=>{
@@ -57,28 +61,63 @@ const Estadistics = ()=>{
     },[])
     useEffect(()=>{
            if(data.length>0){ 
-            for(var i=0; i<=12;i++){
-                let dataRelative=0
-                
-                data?.filter(e=>moment(e.date).format("MM")==i).map((item,index)=>{
-                    console.log(parseInt(item.value))
-                    dataRelative+=parseInt(item.value)
-                    console.log(DataContable)
-
-                    index===data.length-1&&DataContable.push(dataRelative)
-                })
+            for(var i=1; i<=12;i++){
+                if(data?.filter(e=>moment(e.date).format("MM")==i).length>0){
+                    data?.filter(e=>moment(e.date).format("MM")==i).map((item,index)=>{
+                        console.log(data?.filter(e=>moment(e.date).format("MM")==i))
+                        dataRelative=parseInt(item.value)
+                        console.log(dataRelative)
+                        index==data?.filter(e=>moment(e.date).format("MM")==i).length-1&&DataContable.push(dataRelative)
+                        console.log(DataContable)
+                    })
+                }else{
+                    DataContable.push(0)
+                }
+              
             }}
     },[data])
+    const dataFinalIngresos=useMemo( function(){
+        return{
+        datasets:[
+            {
+                label:'Ingresos',
+                data:DataContable,
+                tension:0.3,
+                borderColor:"rgb(150,250,170)",
+                pointBackgroundColor:'rgb(10,250,100)',
+                backgroundColor:'rgba(100,250,100,.2)',
+                borderCapStyle:"round"
+            },
+        ],
+        labels
+        }
+    },[])
+    const dataFinalGasto=useMemo( function(){
+        return{
+        datasets:[
+            {
+                label:'Gasto',
+                data:DataContable,
+                tension:0.3,
+                borderColor:"rgb(250,150,150)",
+                pointBackgroundColor:'rgb(250,20,10)',
+                backgroundColor:'rgba(250,20,10,.2)',
+                borderCapStyle:"round"
+            },
+        ],
+        labels
+        }
+    },[])
     return(
     <>
-    {DataContable&&<Grid container justifyContent={"space-around"}>
-        <Grid item xs={4}>
-        <Line data={dataFinal} options={options}/>
+    <Grid container justifyContent={"space-around"}>
+        <Grid item xs={5}>
+        <Line data={dataFinalIngresos} options={options}/>
         </Grid>
-        <Grid item xs={4}>
-        <Line data={dataFinal} options={options}/>
+        <Grid item xs={5}>
+        <Line data={dataFinalGasto} options={options}/>
         </Grid>
-    </Grid>}
+    </Grid>
 
     </>
  )
