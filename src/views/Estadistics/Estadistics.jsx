@@ -15,7 +15,7 @@ import dayjs from 'dayjs'
 import { Line } from 'react-chartjs-2'
 import { getAllBill } from 'src/api/api'
 import moment from 'moment'
-import { Grid } from '@mui/material'
+import { Button, Grid } from '@mui/material'
 ChartJS.register({
     CategoryScale,
     LinearScale,
@@ -56,10 +56,15 @@ const Estadistics = ()=>{
     let dataRelative=0
     const [data,setData]=useState([])
     const [value, setValue] = React.useState(dayjs(moment().format()));
+    const handleReload=()=>{
+        getAllBill().then(e=>setData(e.data.filter(e=>e.type==='Egreso')))
+        console.log("ok")
+    }
     useEffect(()=>{
         getAllBill().then(e=>setData(e.data.filter(e=>e.type==='Egreso')))
     },[])
     useEffect(()=>{
+
            if(data.length>0){ 
             for(var i=1; i<=12;i++){
                 if(data?.filter(e=>moment(e.date).format("MM")==i).length>0){
@@ -91,7 +96,7 @@ const Estadistics = ()=>{
         ],
         labels
         }
-    },[])
+    },[data])
     const dataFinalGasto=useMemo( function(){
         return{
         datasets:[
@@ -107,17 +112,17 @@ const Estadistics = ()=>{
         ],
         labels
         }
-    },[])
+    },[data])
     return(
     <>
-    <Grid container justifyContent={"space-around"}>
+    {data.length>0&&<Grid container justifyContent={"space-around"}>
         <Grid item xs={5}>
         <Line data={dataFinalIngresos} options={options}/>
         </Grid>
         <Grid item xs={5}>
         <Line data={dataFinalGasto} options={options}/>
         </Grid>
-    </Grid>
+    </Grid>}
 
     </>
  )
