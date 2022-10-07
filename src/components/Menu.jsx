@@ -12,6 +12,7 @@ import HistoryIcon from '@mui/icons-material/History';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
 import ArticleIcon from '@mui/icons-material/Article';
 import { Menu } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
@@ -65,10 +66,11 @@ import SettingsIcon from '@mui/icons-material/Settings';
           >
             <ListItemButton>
               <ListItemIcon>
-                {index===0 &&<DashboardIcon style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}} /> }
-                {index===1 &&<ArticleIcon style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}} /> }
-                {index===2 &&<HistoryIcon style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}} /> }
-                {index===3 &&<SettingsIcon style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
+                {index===0 &&<DashboardIcon style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
+                {index===1 &&<AnalyticsIcon style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
+                {index===2 &&<ArticleIcon   style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
+                {index===3 &&<HistoryIcon   style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
+                {index===4 &&<SettingsIcon  style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -79,15 +81,11 @@ import SettingsIcon from '@mui/icons-material/Settings';
       </List> 
     </Box>
       )
-    
   };
-
-
   return (
     <div >
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-         
           <IconButton onClick={toggleDrawer(anchor, true)} >
        <Menu style={{color:darkMode===false?COLOR_DARK_SECOND:COLOR_LIGHT_SECOND}}/>
       </IconButton>

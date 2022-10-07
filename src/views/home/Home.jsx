@@ -10,6 +10,7 @@ import { useContext,useState,useEffect } from "react";
 import Text from "src/components/UI/Text";
 import InputData from "../Input/Index";
 import BooksScreen from "../Books/index";
+import Estadistics from "../Estadistics/Estadistics";
 import ConfigurationScreen from "../Configuration/ConfigurationScreen";
 const Wrapper= styled(Box)({
     display:"flex",
@@ -27,6 +28,7 @@ const ContMode=styled(Box)({
 })
 const items=[
 'Panel Principal',
+'Estadisticas',
 'Facturas',
 'Historial',
 'Configuracion',
@@ -39,13 +41,7 @@ const ContainerH=styled(ContainerHorizontal)(({darkmode})=>({
 const Home =()=>{
     const {darkMode,screen,setScreen}=useContext(UserContext)
     const Container = darkMode ===true ?ContainerDark: ContainerLight
-    const [ticketTotal,setTicketTotal]=useState([])
     const [menu,setMenu]=useState(0)
-
-useEffect(()=>{
-  console.log(screen)
-  console.log(menu)
-},[screen])
     return(
         <>
       <Container>  
@@ -61,7 +57,6 @@ useEffect(()=>{
         Sistema contable
       </Text>
       <ContMode>
-
         <Text>
         Modo oscuro  
         </Text>
@@ -71,9 +66,10 @@ useEffect(()=>{
       <Wrapper>
      <Header type={menu} setScreen={setScreen} />
      {menu===0&&<BooksScreen screen={screen}/>}
-     {menu===1&&<InputData   screen={screen}/>}
-     {menu===2&&<History/>}
-     {menu===3&&<ConfigurationScreen/>}
+     {menu===1&&<Estadistics/>}
+     {menu===2&&<InputData   screen={screen}/>}
+     {menu===3&&<History/>}
+     {menu===4&&<ConfigurationScreen/>}
         </Wrapper> 
 
 

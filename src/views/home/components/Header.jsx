@@ -13,7 +13,7 @@ const Header =({type,setScreen})=>{
     return(
         <>
        { type===0&&<HeaderOne setScreen={setScreen} />}
-       { type===1&&<HeaderTow setScreen={setScreen} />}
+       { type===2&&<HeaderTow setScreen={setScreen} />}
         </>
     )
 }

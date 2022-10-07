@@ -54,11 +54,11 @@ const Report =()=>{
   useEffect(()=>{
     if(book==='sell'){
       getAllBill().then(e=>setData(e.data.filter(e=>e.type==='Ingreso'&&moment(e.date).format("YYYY-MM")==moment(value.$d).format("YYYY-MM"))))
-      console.log(moment(value.$d).format("YYYY-MM"))
+      console.log(moment(value.$d).format("MM"))
     }
     else if(book==='shop'){
       getAllBill().then(e=>setData(e.data.filter(e=>e.type==='Egreso'&&moment(e.date).format("YYYY-MM")==moment(value.$d).format("YYYY-MM"))))
-      console.log(moment(value.$d).format("YYYY-MM"))
+      console.log(moment(value.$d).format("MM"))
     }
  
   },[value,book])
@@ -90,8 +90,8 @@ const Report =()=>{
           <MenuItem value="">
             <em>Ninguno</em>
           </MenuItem>
-          <MenuItem value={"shop"}>Shop</MenuItem>
-          <MenuItem value={"sell"}>Sell</MenuItem>
+          <MenuItem value={"shop"}>Compras</MenuItem>
+          <MenuItem value={"sell"}>Ventas</MenuItem>
   
         </Select>
           </Grid>

@@ -9,7 +9,7 @@ const BooksScreen=({screen})=>{
    
     {screen===1&&<PurchaseBook/>}
     {screen===2&&<SellBook/>}
-    {screen===3&& <Report/>}
+    {screen===3&&<Report/>}
         </>
     )
 }
