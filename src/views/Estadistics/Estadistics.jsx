@@ -52,41 +52,58 @@ const Estadistics = ()=>{
     'Noviembre',
     'Diciembre'
 ]
-    const DataContable=[]
-    let dataRelative=0
-    const [data,setData]=useState([])
+    const DataContableE=[]
+    let dataRelativeE=0
+    const DataContableI=[]
+    let dataRelativeI=0
+    const [dataE,setDataE]=useState([])
+    const [dataI,setDataI]=useState([])
     const [value, setValue] = React.useState(dayjs(moment().format()));
-    const handleReload=()=>{
-        getAllBill().then(e=>setData(e.data.filter(e=>e.type==='Egreso')))
-        console.log("ok")
-    }
     useEffect(()=>{
-        getAllBill().then(e=>setData(e.data.filter(e=>e.type==='Egreso')))
+        getAllBill().then(e=>setDataI(e.data.filter(e=>e.type==='Ingreso')))
+    },[])
+    useEffect(()=>{
+        getAllBill().then(e=>setDataE(e.data.filter(e=>e.type==='Egreso')))
     },[])
     useEffect(()=>{
 
-           if(data.length>0){ 
+           if(dataE.length>0){ 
             for(var i=1; i<=12;i++){
-                if(data?.filter(e=>moment(e.date).format("MM")==i).length>0){
-                    data?.filter(e=>moment(e.date).format("MM")==i).map((item,index)=>{
-                        console.log(data?.filter(e=>moment(e.date).format("MM")==i))
-                        dataRelative=parseInt(item.value)
-                        console.log(dataRelative)
-                        index==data?.filter(e=>moment(e.date).format("MM")==i).length-1&&DataContable.push(dataRelative)
-                        console.log(DataContable)
+                if(dataE?.filter(e=>moment(e.date).format("MM")==i).length>0){
+                    dataE?.filter(e=>moment(e.date).format("MM")==i).map((item,index)=>{
+                        console.log(dataE?.filter(e=>moment(e.date).format("MM")==i))
+                        dataRelativeE=parseInt(item.value)
+                        console.log(dataRelativeE)
+                        index==dataE?.filter(e=>moment(e.date).format("MM")==i).length-1&&DataContableE.push(dataRelativeE)
+                        console.log(DataContableE)
                     })
                 }else{
-                    DataContable.push(0)
+                    DataContableE.push(0)
                 }
               
             }}
-    },[data])
+           if(dataI.length>0){ 
+                for(var i=1; i<=12;i++){
+                    if(dataI?.filter(e=>moment(e.date).format("MM")==i).length>0){
+                        dataI?.filter(e=>moment(e.date).format("MM")==i).map((item,index)=>{
+                            console.log(dataI?.filter(e=>moment(e.date).format("MM")==i))
+                            dataRelativeI=parseInt(item.value)
+                            console.log(dataRelativeI)
+                            index==dataI?.filter(e=>moment(e.date).format("MM")==i).length-1&&DataContableI.push(dataRelativeI)
+                            console.log(DataContableI)
+                        })
+                    }else{
+                        DataContableI.push(0)
+                    }
+                  
+                }}
+    },[dataE,dataI])
     const dataFinalIngresos=useMemo( function(){
         return{
         datasets:[
             {
                 label:'Ingresos',
-                data:DataContable,
+                data:DataContableI,
                 tension:0.3,
                 borderColor:"rgb(150,250,170)",
                 pointBackgroundColor:'rgb(10,250,100)',
@@ -96,13 +113,13 @@ const Estadistics = ()=>{
         ],
         labels
         }
-    },[data])
+    },[dataI])
     const dataFinalGasto=useMemo( function(){
         return{
         datasets:[
             {
                 label:'Gasto',
-                data:DataContable,
+                data:DataContableE,
                 tension:0.3,
                 borderColor:"rgb(250,150,150)",
                 pointBackgroundColor:'rgb(250,20,10)',
@@ -112,10 +129,10 @@ const Estadistics = ()=>{
         ],
         labels
         }
-    },[data])
+    },[dataE])
     return(
     <>
-    {data.length>0&&<Grid container justifyContent={"space-around"}>
+    {dataE.length>0&&<Grid container justifyContent={"space-around"}>
         <Grid item xs={5}>
         <Line data={dataFinalIngresos} options={options}/>
         </Grid>
