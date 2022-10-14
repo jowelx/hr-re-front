@@ -157,3 +157,51 @@ export const HeaderTow=({setScreen})=>{
         </>
     )
 }
+export const HeaderThree=({setScreen})=>{
+  const [value, setValue] = React.useState('1');
+  const {darkMode}=useContext(UserContext)
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    setScreen(parseInt(newValue)+1)
+  };
+  return(
+      <>
+      <Box sx={{ width: '100%' }}>
+      <Box >
+      <AntTabs 
+    
+      darkMode={darkMode} 
+      value={value}
+      onChange={handleChange} 
+      aria-label="ant example">
+        <AntTab
+        icon={
+        <AddIcon/>
+      }
+        iconPosition="end"
+         label="Resumen"
+         darkMode={darkMode} 
+         />
+        <AntTab
+        icon={
+        < EditIcon/>
+      }
+        iconPosition="end" 
+        label="Añadir" 
+        darkMode={darkMode}
+        />
+          <AntTab
+        icon={
+        <ClearIcon/>
+      }
+        iconPosition="end"
+         label="Nuevo trabajo"
+         darkMode={darkMode} 
+         />
+      </AntTabs>
+    </Box>
+
+  </Box>
+      </>
+  )
+}

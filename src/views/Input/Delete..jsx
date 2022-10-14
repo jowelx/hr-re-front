@@ -1,11 +1,8 @@
-import React from 'react'
-import TextField from '@mui/material/TextField';
 import TextInput from 'src/components/UI/TextInput';
-import SelectInput from 'src/components/Select';
 import {useState }from 'react' 
 import styled from '@emotion/styled';
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { Grid ,Button} from '@mui/material'
+import { ButtonLigth } from 'src/components/UI/Button';
 import SendIcon from '@mui/icons-material/Send';
 const Container = styled.div({
     display:"flex",
@@ -22,24 +19,62 @@ const Wrapper =styled.div({
     marginBottom:"5vw",
     borderRadius:10
 })
-const Tipe=[
-    {
-        label:"Ingreso",
-        value:"Ingreso"
-    },
-    {
-        label:"Egreso",
-        value:"Egreso"
-    }
-]
 const Tittle=styled.p({
     fontSize:20
 })
 const Delete =()=>{
-    const [select,setSelect]=useState("")
-    return(
-        <>
-    <Tittle>
+    const [auth,setAuth]=useState(null)
+    const [value,setValues ]=useState({
+        password:""
+    })
+    const handleChange=(prop,val)=>{
+        setValues({...value,[prop]:val})
+    }
+    const handleValidate=()=>{
+        console.log(value.password)
+        value.password=='123456'&&setAuth(true)
+    }
+    return(<div>
+    <br/>
+    <br/>
+    {!auth?
+    
+     <Wrapper>
+ 
+        <Grid container justifyContent={"center"}>
+            <Grid item xs={12}>    
+           <h5 style={{margin:0}}>Ingrese la clave de administrador para acceder a esta funcion</h5>
+            </Grid>
+            <br/> 
+            <br/>
+            <br/> 
+            <Grid item xs={7}>
+            <TextInput
+         label="Contraseña"
+         password={true}
+         style={{width:"100%"}}
+         value={value.password}
+         onChange={(event)=>handleChange("password",event.target.value)}
+
+         />
+            </Grid>
+           <Grid item xs={7}>
+           <ButtonLigth
+            onPress={()=>handleValidate()}
+        name={"Iniciar sesion"}
+        />
+           </Grid>
+           <br/>
+           <br/> 
+           <br/>
+           <br/> 
+        </Grid>
+    
+       </Wrapper>
+  
+    :   
+    <>
+        <Tittle>
     Eliminar una factura
     </Tittle>
      <Wrapper>
@@ -53,7 +88,9 @@ const Delete =()=>{
         <Button variant="contained" endIcon={<SendIcon />}>
       Borrar
       </Button>
-        </>
+    </>
+    }
+        </div>
     )
 }
 export default Delete

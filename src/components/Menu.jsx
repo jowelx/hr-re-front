@@ -10,6 +10,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import HistoryIcon from '@mui/icons-material/History';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import InventoryIcon from '@mui/icons-material/Inventory';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
@@ -68,9 +69,10 @@ import SettingsIcon from '@mui/icons-material/Settings';
               <ListItemIcon>
                 {index===0 &&<DashboardIcon style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
                 {index===1 &&<AnalyticsIcon style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
-                {index===2 &&<ArticleIcon   style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
-                {index===3 &&<HistoryIcon   style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
-                {index===4 &&<SettingsIcon  style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
+                {index===2 &&<InventoryIcon style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
+                {index===3 &&<ArticleIcon   style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
+                {index===4 &&<HistoryIcon   style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
+                {index===5 &&<SettingsIcon  style={{color:menu===index?COLOR_BLUE:COLOR_LIGHT_THIRD}}/>}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>

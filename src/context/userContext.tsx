@@ -33,7 +33,10 @@ import {Dispatch, SetStateAction} from 'react';
   setTime:Dispatch<SetStateAction<[]>>,
   loadding:boolean,
   setLoadding:Dispatch<SetStateAction<Boolean>>,
-
+  inventorySettings:any,
+  setInventorySettings:Dispatch<SetStateAction<{}>>,
+  inventory:any,
+  setInventory:Dispatch<SetStateAction<{}>>,
 }
 export const DefaultUserContext:UserType = {
   impuestos:{
@@ -66,7 +69,10 @@ export const DefaultUserContext:UserType = {
   setTime:()=>{},
   loadding:false,
   setLoadding:()=>{},
-
+  inventorySettings:{},
+  setInventorySettings:()=>{},
+  inventory:{},
+  setInventory:()=>{},
 };
 export const UserContext = createContext(DefaultUserContext);
 export default function UserProvider({children}) {
@@ -74,6 +80,8 @@ export default function UserProvider({children}) {
   const [error, setError]=useState(DefaultUserContext.error)
   const [message, setMessage]=useState(DefaultUserContext.message)
   const [darkMode,setDarkMode]=useState(false)
+  const [inventory,setInventory]=useState([])
+  const [inventorySettings,setInventorySettings]=useState([])
   const [islogged,setIslogged]=useState(false)
   const [loadding,setLoadding]=useState(false)
   const [screen,setScreen]=useState(0)
@@ -87,10 +95,14 @@ export default function UserProvider({children}) {
       user, 
       setUser,
       error,
+      inventory,
+      setInventory,
       setError, 
       message, 
       setMessage,
       darkMode,
+      inventorySettings,
+      setInventorySettings,
       setDarkMode, 
       islogged,
       setIslogged,

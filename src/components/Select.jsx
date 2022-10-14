@@ -21,7 +21,7 @@ export default function SelectInput({label,data,setValue,value,prop}) {
   };
   return (
     <div>
-      <FormControl required sx={{ m: 1, minWidth: 225 }}>
+      <FormControl required sx={{ m: 2, minWidth: 150}}>
         <InputLabel id="demo-simple-select-required-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-required-label"
@@ -33,7 +33,7 @@ export default function SelectInput({label,data,setValue,value,prop}) {
         >
           {data?.map(i=>{
             return(
-        <MenuItem value={i.value}>{i.label}</MenuItem>
+        <MenuItem value={!i.value?i.category:i.value}>{!i.value?i.category:i.value}</MenuItem>
             )
           })}
           

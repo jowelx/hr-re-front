@@ -5,6 +5,12 @@ import styled from '@emotion/styled'
 import { Grid } from '@mui/material'
 import {Divider} from '@mui/material'
 import moment from 'moment'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs from 'dayjs'
+
+import TextField from '@mui/material/TextField';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 const Wrapper=styled.div({
     marginTop:10,
     width:"90%",
@@ -47,12 +53,36 @@ const Tittle=styled.p({
 })
 const History=()=>{
     const [data,setData]=useState([])
+    const [value,setValue] = React.useState(dayjs(moment().format()));
     useEffect(()=>{
-     getAllBill().then(e=>setData(e.data))}
-    ,[])
+     getAllBill().then(e=>setData(e.data.filter(e=>moment(e.date).format("YYYY")===moment(value.$d).format("YYYY"))))}
+    ,[value])
     return(
         <>
         <Wrapper>
+        <br/>
+            <Grid container>
+                <Grid item xs={12}>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+      
+          views={['year']}
+        
+          minDate={dayjs('2012-03-01')}
+          maxDate={dayjs('2023-06-01')}
+          value={value}
+          onChange={(newValue) => {
+            setValue(newValue);
+          }}
+          renderInput={(params) => <TextField
+           
+            
+            {...params} helperText={null} />}
+          />
+      </LocalizationProvider>
+                </Grid>
+            </Grid>
+        <br/>
         <Grid container  spacing={4}>
         {data?.map((i,index)=>{
             return(

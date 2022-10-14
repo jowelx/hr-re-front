@@ -6,7 +6,7 @@ export const ButtonLigth = ({name,onPress})=>{
         <LoadingButton
         size="small"
         style={{width:"100%"}}
-        onPress={onPress}
+        onClick={onPress}
         loadingIndicator="Loading..."
         variant="contained"
       >{name}

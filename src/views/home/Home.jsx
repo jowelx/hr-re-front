@@ -11,6 +11,7 @@ import Text from "src/components/UI/Text";
 import InputData from "../Input/Index";
 import BooksScreen from "../Books/index";
 import Estadistics from "../Estadistics/Estadistics";
+import Inventory from "../Inventary";
 import ConfigurationScreen from "../Configuration/ConfigurationScreen";
 const Wrapper= styled(Box)({
     display:"flex",
@@ -29,6 +30,7 @@ const ContMode=styled(Box)({
 const items=[
 'Panel Principal',
 'Estadisticas',
+'Inventario',
 'Facturas',
 'Historial',
 'Configuracion',
@@ -64,12 +66,13 @@ const Home =()=>{
       </ContMode>
       </ContainerH>
       <Wrapper>
-     <Header type={menu} setScreen={setScreen} />
+     <Header type={menu}  setScreen={setScreen} />
      {menu===0&&<BooksScreen screen={screen}/>}
      {menu===1&&<Estadistics/>}
-     {menu===2&&<InputData   screen={screen}/>}
-     {menu===3&&<History/>}
-     {menu===4&&<ConfigurationScreen/>}
+     {menu===2&&<Inventory   screen={screen}/>}
+     {menu===3&&<InputData   screen={screen}/>}
+     {menu===4&&<History/>}
+     {menu===5&&<ConfigurationScreen/>}
         </Wrapper> 
 
 

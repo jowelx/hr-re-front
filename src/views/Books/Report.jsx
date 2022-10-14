@@ -107,9 +107,7 @@ const Report =()=>{
             <Tittle>Selecciona la fecha:</Tittle>
             </Grid>
             <Grid item xs={12}>
-            <ContainerDtaPicker 
-           
-            >
+            <ContainerDtaPicker>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
       

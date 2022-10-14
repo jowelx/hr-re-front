@@ -6,11 +6,13 @@ import Error from './components/Error';
 import {useContext}from 'react'
 import { UserContext } from './context/userContext';
 import { useEffect } from 'react';
-import { getTaxes } from './api/api';
+import { getTaxes,getAllSettings,setInventorySettings } from './api/api';
+
 function App() {
-  const {loadding,message,error,setImpuestos,impustos}=useContext(UserContext)
+  const {loadding,message,error,setImpuestos,setInventorySettings}=useContext(UserContext)
   useEffect(()=>{
     getTaxes()
+  
     .then(e=>{
     
       let data=e.data[0]
@@ -20,6 +22,13 @@ function App() {
         creditoFiscal:data.creditoFiscal,
         debitoFiscal:data.debitoFiscal
       })
+    })
+    .catch(function(e){
+      console.log(e)
+    })
+    getAllSettings()
+    .then(e=>{
+      setInventorySettings(e.data)
     })
     .catch(function(e){
       console.log(e)
