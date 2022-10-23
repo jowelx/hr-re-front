@@ -1,5 +1,5 @@
 import axios from "axios";
-const url='https://proyect-back.vercel.app'
+const url='https://proyecto4-back.herokuapp.com'
 const config = {
     headers: {
       "Access-Control-Allow-Origin": "*",
