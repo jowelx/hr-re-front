@@ -1,5 +1,5 @@
 import axios from "axios";
-const url='http://localhost:4000'
+const url='https://proyect-back.vercel.app'
 const config = {
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -17,7 +17,8 @@ export const addInventoryCategory=async(newCategory)=>await axios.post(url+'/api
   newCategory
 })
 export const getAllSettings=async()=> await axios.post(url+'/api/bill/getSettings')
-export const editSettings=async(values)=>await axios.post(url+'/api/bill/editSettings',{
+
+export const editSettings  =async(values)=>await axios.post(url+'/api/bill/editSettings',{
   values
 })
 export const deleteSettings=async(values)=>await axios.post(url+'/api/bill/deleteSettings',{
@@ -27,3 +28,7 @@ export const addInventory = async(values)=>await axios.post(url+'/api/bill/addIn
   values
 })
 export const getInventory = async()=>await axios.post(url+'/api/bill/getInventory')
+
+export const addWork      = async(lista,values)=>await axios.post(url+'/api/bill/addWork',{
+  lista,values
+})

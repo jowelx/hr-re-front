@@ -54,15 +54,29 @@ const AddInventory =()=>{
         addInventory(data)
         .then((e)=>{
             console.log(e)
+            setLoadding(true)
+            setTimeout(function(){
+                setLoadding(false)
+               },10000);
+          
+            if(e.status===200){
+                setTimeout(function(){
+                 setLoadding(false)
+                },2000);
+            }else{
+                setLoadding(false)
+                setError(e.status)
+            }
         })
         .catch(function(e){
                 console.log(e)
         })
+    
     }
     return(
            <>
     <Tittle>
-    Agregar nueva factura
+    Agregar nuevo item al inventario
     </Tittle>
      <Wrapper>
      <Container>
@@ -89,7 +103,7 @@ const AddInventory =()=>{
    </Container>
      </Wrapper>
         <Button onClick={()=>handlesend()} variant="contained" endIcon={<SendIcon />}>
-      Gueardar
+      Guardar
       </Button>
         </>
     )

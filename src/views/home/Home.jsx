@@ -13,6 +13,8 @@ import BooksScreen from "../Books/index";
 import Estadistics from "../Estadistics/Estadistics";
 import Inventory from "../Inventary";
 import ConfigurationScreen from "../Configuration/ConfigurationScreen";
+import moment from "moment";
+import {Redirect} from 'react-router-dom'
 const Wrapper= styled(Box)({
     display:"flex",
     justifyContent:"flex-start",
@@ -44,8 +46,13 @@ const Home =()=>{
     const {darkMode,screen,setScreen}=useContext(UserContext)
     const Container = darkMode ===true ?ContainerDark: ContainerLight
     const [menu,setMenu]=useState(0)
+    const [Hour,setHour]=useState(moment().format('LT'))
+    setInterval(function () {
+      setHour(moment().format('LT'))
+      }, 10000);
     return(
         <>
+        {menu==6&&<Redirect to="/"/>}
       <Container>  
       <ContainerH 
       darkmode={darkMode}
@@ -57,6 +64,9 @@ const Home =()=>{
       />
       <Text>
         Sistema contable
+      </Text>
+      <Text>
+        {Hour}
       </Text>
       <ContMode>
         <Text>

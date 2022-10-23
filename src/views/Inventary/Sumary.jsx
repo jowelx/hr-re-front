@@ -4,16 +4,44 @@ import { Grid } from '@mui/material'
 import { useContext ,useEffect} from 'react'
 import { UserContext } from 'src/context/userContext'
 import { getInventory } from 'src/api/api'
+import Box from '@mui/material/Box';
+import { DataGrid } from '@mui/x-data-grid';
 const Container=styled.div({
-
     width:"100%",
     textAlign:"left"
 })
-const Card=styled.div({
-    borderRadius:2,
-    padding:10,
-    boxShadow:"0 .1vw 2px 0 rgb(100,100,100)"
-})
+const columns = [
+    { 
+      field: '_id',
+      headerName: 'ID',
+      width: 90 
+    },
+    {
+      field: 'name',
+      headerName: 'Nombre',
+      width: 150,
+      editable: false,
+    },
+    {
+      field: 'amount',
+      headerName: 'Cantidad',
+      width: 150,
+      editable: false,
+    },
+    {
+      field: 'date',
+      headerName: 'Fecha',
+      type: 'number',
+      width: 150,
+      editable: false,
+    },
+    {
+      field: 'category',
+      headerName: 'Categoria',
+      width: 110,
+      editable: false,
+    },
+  ];
 const Sumary =()=>{
     const {inventorySettings,inventory,setInventory}=useContext(UserContext)
    useEffect(()=>{
@@ -25,43 +53,25 @@ const Sumary =()=>{
         console.log(e)
     })
    },[])
+
     return(
         <>
         <br/>
-        <Grid container justifyContent={"center"}spacing={5}>
-
-       
-      { inventorySettings?.map((i,index)=>{
-        return(
-            
+    <Box sx={{ height: 500, width: '90%' }}>
+          <DataGrid
+            rows={inventory}
+            columns={columns}
+            pageSize={20}
+            rowsPerPageOptions={[20]}
+            disableSelectionOnClick
+            experimentalFeatures={{ newEditingApi: true }}
+          />
+    </Box>
+        <Grid container justifyContent={"center"}spacing={5}>    
             <Grid item xs={10}>
                 <Container>
-                <Grid container>
-                    <Grid xs={12}> 
-                      <p>{i.category}:</p>
-                    </Grid>
-                    <Grid item xs={3}>
-                        {inventory?.filter(e=>e.category===i.category).map((i,index)=>{
-                            return(
-                                <>
-                                <Card>
-                                <p>Nombre:{i.name}</p>
-                                <p>Cantidad:{i.amount}</p>
-                                
-                                </Card>
-                           
-                                </>
-                            )
-                        })}
-                    </Grid>
-                </Grid>
-
                 </Container>
             </Grid>
-            
-        )
-      })  
-        }
          </Grid>
         </>
     )

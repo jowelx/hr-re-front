@@ -34,6 +34,7 @@ function App() {
       console.log(e)
     })
   },[])
+  
    return (
     <div className="App">
        {error   && <Error/>}

@@ -6,7 +6,9 @@ import CheckIcon from '@mui/icons-material/Check';
 import { UserContext } from 'src/context/userContext';
 import { useContext } from 'react';
 import IconButton from '@mui/material/IconButton';
-
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import { Grid } from '@mui/material';
+import Button from '@mui/material/Button';
 const Container=styled.div({
     position:"absolute",
     width:"100%",
@@ -18,15 +20,15 @@ const Container=styled.div({
     zIndex:99
 })
 const Card=styled.div({
-    width:300,
-    height:200,
-    borderRadius:10,
-    boxShadow:"0 5px .8vw 0 rgb(20,20,20)",
+    width:"30%",
+    borderRadius:5,
+    boxShadow:"0 2px .1vw 0 rgb(100,100,100)",
     backgroundColor:"rgb(255,255,255)",
     display:"flex",
     alignItems:"center",
     justifyContent:"flex-start",
-    flexDirection:"column"
+    flexDirection:"column",
+    paddingBottom:20
 
 })
 const Tittle=styled.p({
@@ -37,7 +39,8 @@ const Tittle=styled.p({
 })
 const Text=styled.p({
     fontSize:20,
-    marginTop:15
+    marginTop:15,
+    color:"rgb(100,100,100)"
 })
 const Icon=styled(CloseIcon)({
     color:"white",
@@ -46,10 +49,9 @@ const Icon=styled(CloseIcon)({
 const ContainerIcon =styled.div({
     width :"100%",
     display:"flex",
-    backgroundColor:"rgb(70,200,255)",
-    borderRadius:"10px 10px 0px 0px",
-    marginBottom:15,
-    justifyContent:"space-between",
+    //backgroundColor:"rgb(70,200,255)",
+    borderRadius:"5px 5px 0px 0px",
+    justifyContent:"flex-end",
     alignItems:"center"
 })
 const Message=()=>{
@@ -62,18 +64,28 @@ const Message=()=>{
         <Container>
             <Card>
     <ContainerIcon>
-    <Tittle></Tittle>
-    <Tittle>
-            Alerta
-        </Tittle>
       <IconButton style={{marginRight:5}}onClick={()=>handleClick()}  aria-label="upload picture" component="label">
-        <Icon/>
+        <Icon style={{color:"rgb(100,100,100)"}}/>
       </IconButton>
-      
     </ContainerIcon>
+        <Grid container>
+            <Grid item xs={12}>
+            <ErrorOutlineIcon 
+            style={{fontSize:120,color:"rgb(255,180,100)"}}
+            />
+            </Grid>
+            <Grid item xs={12}>
             <Text>
             {message} 
             </Text>
+            </Grid>
+        <Grid item xs={12}>
+        <Button variant="contained" size="medium" >
+          Aceptar
+        </Button>
+        </Grid>
+        </Grid>
+         
             </Card>
        
         </Container>

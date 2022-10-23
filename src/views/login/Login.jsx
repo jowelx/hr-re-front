@@ -7,9 +7,10 @@ import TextInput from "src/components/UI/TextInput";
 import { styled } from "@mui/material";
 import { ButtonLigth,ButtonDark } from "src/components/UI/Button";
 import { Box } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link,Redirect } from "react-router-dom";
 import axios from "axios";
-const Wrapper= styled(Box)({
+
+const Wrapper = styled(Box)({
     display:"flex",
     justifyContent:"space-between",
     alignItems:"center",
@@ -23,7 +24,7 @@ const Wrapper= styled(Box)({
     backgroundColor:"rgb(230,230,230)"
 
 })
-const Bubble1= styled(Box)({
+const Bubble1 = styled(Box)({
     position:"absolute",
     borderRadius:"100%",
     height:270,
@@ -35,7 +36,7 @@ const Bubble1= styled(Box)({
     boxShadow:"0 0vw 2vw .2vw rgba(100,100,100,.2)",
     background:" linear-gradient(200deg, rgb(20,250,210) 0%, rgb(0,180,255) 100%)",
 })
-const Bubble2= styled(Box)({
+const Bubble2 = styled(Box)({
     position:"absolute",
     borderRadius:"100%",
     height:190,
@@ -47,7 +48,7 @@ const Bubble2= styled(Box)({
     boxShadow:"0 0vw 2vw .2vw rgba(100,100,100,.2)",
     background:" linear-gradient(-50deg, rgb(50,80,210) 0%, rgb(0,210,255) 100%)",
 })
-const Bubble3= styled(Box)({
+const Bubble3 = styled(Box)({
     position:"absolute",
     borderRadius:"100%",
     height:80,
@@ -59,7 +60,7 @@ const Bubble3= styled(Box)({
     boxShadow:"0 0vw 2vw .2vw rgba(100,100,100,.2)",
     background:" linear-gradient(20deg, rgb(50,120,210) 0%, rgb(0,210,255) 100%)",
 })
-const Bubble4= styled(Box)({
+const Bubble4 = styled(Box)({
     position:"absolute",
     borderRadius:"100%",
     height:80,
@@ -76,11 +77,16 @@ const Login =()=>{
         user:"",
         password:""
     })
+    const [logged,setLogged]=useState(false)
     const handleChange=(prop,val)=>{
         setValues({...value,[prop]:val})
     }
+    const handleSend=()=>{
+        value.password==12345&&setLogged(true)
+    }
     return(
     <>
+    {logged&&<Redirect to="/home"/>}
     <Bubble1/>
     <Bubble2/>
     <Bubble3/>
@@ -88,13 +94,6 @@ const Login =()=>{
     <ContainerLogin>
        <Wrapper>
            <h5 style={{margin:0}}>Login</h5>
-          <TextInput
-         label="Usuario"
-         style={{width:"100%"}}
-         value={value.user}
-         onChange={(event)=>handleChange("user",event.target.value)}
-     
-        />
          <TextInput
          label="Contraseña"
          password={true}
@@ -103,14 +102,14 @@ const Login =()=>{
          onChange={(event)=>handleChange("password",event.target.value)}
 
          />
-            <Link to="/home" style={{width:"100%",textDecoration:"none"}}>
+            
 
           
         <ButtonLigth
-        
+        onPress={()=>handleSend()}
         name={"Iniciar sesion"}
         />
-  </Link>
+
 
        
        

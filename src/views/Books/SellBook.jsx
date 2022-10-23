@@ -15,7 +15,9 @@ display:"flex",
 justifyContent:"center"
 })
 const Tittle=styled.p({
-  fontSize:20
+  fontSize:30,
+  marginLeft:"10%",
+  textAlign:"left"
 })
 const ContainerDtaPicker=styled.div({
   marginTop:20
@@ -23,7 +25,7 @@ const ContainerDtaPicker=styled.div({
 const Wrapper=styled.div({
   overflow:" scroll",
   marginTop:20,
-  height:"30vw",
+  height:"28vw",
   padding:"1vw 0vw"
 })
 const SellBook=()=>{
@@ -41,15 +43,22 @@ const SellBook=()=>{
   <Container>
     <Grid container justifyContent="center" alignItems="center">
       <Grid item xs={6}>
-      <Tittle>Selecciona la fecha:</Tittle>
+      <Tittle>Libro de Ventas</Tittle>
       </Grid>
       <Grid item xs={6}>
        
-        <ContainerDtaPicker>
+      <Grid container justifyContent={"center"} alignItems={"center"}>
+        <Grid item xs={10}>
+      <p style={{textAlign:"right",fontSize:24}}>Selecciona una fecha</p>
+        </Grid>
+        <Grid item xs={10}>
+        <ContainerDtaPicker
+        style={{display:"flex",justifyContent:"flex-end"}}
+        >
         <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
           views={['year', 'month']}
-          label="Año y mes"
+          label=""
           minDate={dayjs('2012-03-01')}
           maxDate={dayjs('2023-06-01')}
           value={value}
@@ -62,6 +71,8 @@ const SellBook=()=>{
 
       </LocalizationProvider>
         </ContainerDtaPicker>
+        </Grid>
+       </Grid>
     
       </Grid>
       <Grid item xs={11}>

@@ -51,10 +51,11 @@ const Create =()=>{
     const [value, setValue] = React.useState(dayjs(moment().format()));
     const {setLoadding,setError,setMessage}=useContext(UserContext)
     const handleChangeDate = (newValue) => {
-        setValue(newValue);
+        setData({ ...data,date:newValue});
+        console.log(value)
     };
     const [data,setData]=useState({
-        date:value,
+        date:'',
         serial:"",
         value:"",
         type:"Ingreso"
@@ -64,6 +65,7 @@ const Create =()=>{
         console.log(data)
     }
     const handlesend=()=>{
+        console.log(data)
         if(
         data.date===""  ||
         data.serial===""||
@@ -109,7 +111,7 @@ const Create =()=>{
     
           label="Date desktop"
           inputFormat="MM/DD/YYYY"
-          value={value}
+          value={data.date}
           onChange={handleChangeDate}
           renderInput={(params) => <TextField {...params} />}
         />
